@@ -1,0 +1,56 @@
+{
+    "name": "MasterControls",
+    "maps": [
+        {
+            "name": "MainInputs",
+            "id": "ed7c734c-638c-467a-9e1f-200e5f8d202e",
+            "actions": [
+                {
+                    "name": "CameraMoveHorizontal",
+                    "type": "Value",
+                    "id": "96e593f9-0461-47fc-8666-8dfd611101f2",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "2D Vector",
+                    "id": "55aeecec-3ec4-43fa-b390-315e0348ba1d",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CameraMoveHorizontal",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "left",
+                    "id": "5aa4bf1f-2b13-4bd5-b476-c23ab0391734",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CameraMoveHorizontal",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "6ec4cd58-6c33-44da-a8df-dac8cb502838",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CameraMoveHorizontal",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
