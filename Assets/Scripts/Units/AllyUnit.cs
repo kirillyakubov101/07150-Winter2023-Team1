@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace OurGame.State
+namespace OurGame.Units
 {
-    public class AllyStateMachine : StateMachine
+    public class AllyUnit : Unit
     {
-       
+
     }
 }
 

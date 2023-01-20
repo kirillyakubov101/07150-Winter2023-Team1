@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using OurGame.Units;
 
 namespace OurGame.State
 {
@@ -8,6 +9,9 @@ namespace OurGame.State
     {
         [SerializeField] private State m_currentState;
         [SerializeField] private State[] m_states;
+        [SerializeField] private Unit m_selfUnit;
+
+        public Unit SelfUnit { get => m_selfUnit;  }
 
         private void Start()
         {
@@ -28,6 +32,11 @@ namespace OurGame.State
         {
             m_currentState = m_states[0]; //First state, MoveState
             m_currentState.EnterState();
+        }
+
+        public void SwitchState(State.StateName newState)
+        {
+            //
         }
     }
 

@@ -6,7 +6,13 @@ namespace OurGame.State
 {
     public abstract class State : MonoBehaviour
     {
-       protected StateName m_currentStateName;
+        protected StateMachine m_machine;
+        protected StateName m_currentStateName;
+        
+        protected virtual void Awake()
+        {
+            m_machine = GetComponent<StateMachine>();
+        }
 
         public enum StateName
         {

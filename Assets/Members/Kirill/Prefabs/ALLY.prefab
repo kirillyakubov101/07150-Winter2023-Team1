@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 4765161850881240503}
   - component: {fileID: 5989414364320967575}
   - component: {fileID: 7746278138781446653}
+  - component: {fileID: 2040980987471947200}
   m_Layer: 0
   m_Name: ALLY
   m_TagString: Untagged
@@ -147,6 +148,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_currentState: {fileID: 0}
+  m_states:
+  - {fileID: 4765161850881240503}
+  - {fileID: 5989414364320967575}
+  - {fileID: 7746278138781446653}
+  m_selfUnit: {fileID: 2040980987471947200}
 --- !u!114 &4765161850881240503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b86d03b4730b0fb498e21865ab804767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_machine: {fileID: 0}
 --- !u!114 &5989414364320967575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed251e557a07e89428cbdba80fb8b463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_machine: {fileID: 0}
 --- !u!114 &7746278138781446653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,3 +191,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 271376275eacb6e4ca686cfb09674eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_machine: {fileID: 0}
+--- !u!114 &2040980987471947200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8935596645438699566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9d7cfa741639924ab410d788e8bddce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_unitName: 
+  m_unitDamage: 0
+  m_moveSpeed: 10

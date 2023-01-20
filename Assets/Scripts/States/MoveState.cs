@@ -23,7 +23,7 @@ namespace OurGame.State
 
         public override void Tick(float deltaTime)
         {
-            //
+            transform.Translate(transform.forward * deltaTime * this.m_machine.SelfUnit.MoveSpeed);
         }
     }
 }
