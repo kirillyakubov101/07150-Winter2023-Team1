@@ -11,17 +11,20 @@ namespace OurGame.State
 
         public override void EnterState()
         {
-            throw new System.NotImplementedException();
+            print("entered attack state");
         }
 
         public override void ExitState()
         {
-            throw new System.NotImplementedException();
+            this.m_unit.CurrentEnemy = null;
         }
 
         public override void Tick(float deltaTime)
         {
-            throw new System.NotImplementedException();
+            if(this.m_unit.CurrentEnemy == null) // TODO: add a death condition in a form of .IsDead()
+            {
+                this.m_unit.StateMachine.SwitchState(StateName.MOVE);
+            }
         }
     }
 }

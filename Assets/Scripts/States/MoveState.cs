@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace OurGame.State
@@ -13,18 +11,20 @@ namespace OurGame.State
 
         public override void EnterState()
         {
-            Debug.Log("Enter Move State");
+            //Debug.Log("Enter Move State");
         }
 
         public override void ExitState()
         {
-            Debug.Log("Exit Move State");
+            //Debug.Log("Exit Move State");
         }
 
         public override void Tick(float deltaTime)
         {
-            transform.Translate(transform.forward * deltaTime * this.m_machine.SelfUnit.MoveSpeed);
+            transform.Translate(transform.forward * deltaTime * this.m_unit.MoveSpeed, Space.World);
         }
+
+        
     }
 }
 
