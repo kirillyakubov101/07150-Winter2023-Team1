@@ -1,3 +1,4 @@
+using OurGame.Units;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,12 +7,12 @@ namespace OurGame.State
 {
     public abstract class State : MonoBehaviour
     {
-        protected StateMachine m_machine;
+        protected Unit m_unit;
         protected StateName m_currentStateName;
         
         protected virtual void Awake()
         {
-            m_machine = GetComponent<StateMachine>();
+            m_unit = GetComponent<Unit>();
         }
 
         public enum StateName
@@ -24,6 +25,11 @@ namespace OurGame.State
         public abstract void EnterState();
         public abstract void ExitState();
         public abstract void Tick(float deltaTime);
+
+        public StateName GetStateName()
+        {
+            return m_currentStateName;
+        }
     }
 }
 
