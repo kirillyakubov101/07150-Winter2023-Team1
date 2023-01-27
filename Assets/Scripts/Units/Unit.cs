@@ -13,6 +13,7 @@ namespace OurGame.Units
         [SerializeField] private StateMachine m_stateMachine;                    //the state machine to change states
         [SerializeField] private Transform m_orientation;                        //the transform to raycast from
         [SerializeField] private Unit m_currentEnemy;                            //TODO: remove serialize
+        [field:SerializeField] public Animator Animator { get; private set; }
 
         public float MoveSpeed { get => m_moveSpeed; }
         public Unit CurrentEnemy { get => m_currentEnemy; set => m_currentEnemy = value; }

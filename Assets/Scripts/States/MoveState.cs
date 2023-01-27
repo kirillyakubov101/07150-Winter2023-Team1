@@ -4,6 +4,9 @@ namespace OurGame.State
 {
     public class MoveState : State
     {
+        private readonly int MoveStateAnimHash = Animator.StringToHash("Move");
+        private const float CrossFadeDuration = 0.1f;
+
         private MoveState()
         {
             this.m_currentStateName = StateName.MOVE;
@@ -11,7 +14,7 @@ namespace OurGame.State
 
         public override void EnterState()
         {
-            //Debug.Log("Enter Move State");
+           this.m_unit.Animator.CrossFadeInFixedTime(MoveStateAnimHash, CrossFadeDuration);
         }
 
         public override void ExitState()
