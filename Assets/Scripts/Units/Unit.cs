@@ -9,6 +9,8 @@ namespace OurGame.Units
         [SerializeField] private float m_unitDamage;                             //unit damage
         [SerializeField] private float m_moveSpeed = 10f;                        //unit move speed
         [SerializeField] private float m_attackRange = 5f;                       //unit attack range
+        [SerializeField] private float m_maxHealth;
+        [SerializeField] private float m_health;
         [SerializeField] private LayerMask m_enemyLayerMask = new LayerMask();   //the layer it looks for as opponent
         [SerializeField] private StateMachine m_stateMachine;                    //the state machine to change states
         [SerializeField] private Transform m_orientation;                        //the transform to raycast from
@@ -18,6 +20,12 @@ namespace OurGame.Units
         public float MoveSpeed { get => m_moveSpeed; }
         public Unit CurrentEnemy { get => m_currentEnemy; set => m_currentEnemy = value; }
         public StateMachine StateMachine { get => m_stateMachine; }
+        public float UnitDamage { get => m_unitDamage; }
+
+        private void Start()
+        {
+            this.m_health = this.m_maxHealth; //init
+        }
 
         private void FixedUpdate()
         {
@@ -36,6 +44,21 @@ namespace OurGame.Units
                     m_stateMachine.SwitchState(State.State.StateName.ATTACK);
                 }
             }
+        }
+
+        public void TakeDamage(float damage)
+        {
+            this.m_health = Mathf.Max(this.m_health - damage, 0f);
+
+            if (IsDead())
+            {
+                StateMachine.SwitchState(State.State.StateName.DEATH);
+            }
+        }
+
+        public bool IsDead()
+        {
+            return this.m_health <= 0f;
         }
     }
 }

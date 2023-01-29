@@ -24,16 +24,24 @@ namespace OurGame.State
 
         public override void Tick(float deltaTime)
         {
-            if(this.m_unit.CurrentEnemy == null) // TODO: add a death condition in a form of .IsDead()
+            if(this.m_unit.CurrentEnemy == null || this.m_unit.CurrentEnemy.IsDead())
             {
                 this.m_unit.StateMachine.SwitchState(StateName.MOVE);
+                return;
             }
         }
 
         //anim evennt
         private void AttackAnimEvent()
         {
-            print("attack");
+            if(this.m_unit.CurrentEnemy == null || this.m_unit.CurrentEnemy.IsDead())
+            {
+                this.m_unit.StateMachine.SwitchState(StateName.MOVE);
+                return;
+            }
+
+            this.m_unit.CurrentEnemy.TakeDamage(this.m_unit.UnitDamage);
+
         }
     }
 }
