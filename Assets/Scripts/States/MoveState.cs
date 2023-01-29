@@ -19,7 +19,7 @@ namespace OurGame.State
 
         public override void ExitState()
         {
-            //Debug.Log("Exit Move State");
+           //
         }
 
         public override void Tick(float deltaTime)
