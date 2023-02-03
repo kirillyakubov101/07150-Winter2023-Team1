@@ -22,6 +22,8 @@ namespace OurGame.Units
         public StateMachine StateMachine { get => m_stateMachine; }
         public float UnitDamage { get => m_unitDamage; }
 
+       
+
         private void Start()
         {
             this.m_health = this.m_maxHealth; //init

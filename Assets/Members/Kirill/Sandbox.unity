@@ -537,6 +537,10 @@ PrefabInstance:
       propertyPath: m_moveSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5554903084768364916, guid: 463b5733b3b4bae479a64c0d04025e17, type: 3}
+      propertyPath: m_attackRange
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6387392783037464131, guid: 463b5733b3b4bae479a64c0d04025e17, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1110,6 +1114,10 @@ PrefabInstance:
     - target: {fileID: 5862002004768175867, guid: ebc68c280f80ca64cb2302c8b57b01a4, type: 3}
       propertyPath: m_Name
       value: KnightEvil
+      objectReference: {fileID: 0}
+    - target: {fileID: 9186358341702772119, guid: ebc68c280f80ca64cb2302c8b57b01a4, type: 3}
+      propertyPath: m_maxHealth
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 9186358341702772119, guid: ebc68c280f80ca64cb2302c8b57b01a4, type: 3}
       propertyPath: m_moveSpeed
