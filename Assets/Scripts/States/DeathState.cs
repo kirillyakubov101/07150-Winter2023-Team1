@@ -15,7 +15,6 @@ namespace OurGame.State
         public override void EnterState()
         {
             this.m_unit.Animator.CrossFadeInFixedTime(MoveStateAnimHash, CrossFadeDuration);
-            this.m_unit.CurrentEnemy = null;
             Destroy(this.m_unit);
         }
 

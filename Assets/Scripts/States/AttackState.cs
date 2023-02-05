@@ -34,6 +34,7 @@ namespace OurGame.State
         //anim evennt
         private void AttackAnimEvent()
         {
+            if (this.m_unit.IsDead()) { return; }
             if(this.m_unit.CurrentEnemy == null || this.m_unit.CurrentEnemy.IsDead())
             {
                 this.m_unit.StateMachine.SwitchState(StateName.MOVE);

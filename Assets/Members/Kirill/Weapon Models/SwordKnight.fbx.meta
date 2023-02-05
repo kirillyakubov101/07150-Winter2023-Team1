@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a516db9a124d39c49bfe488c46052b27
+guid: 44efa70cd12b945458ccdab93aa68606
 ModelImporter:
   serializedVersion: 22102
   internalIDToNameTable: []
@@ -12,8 +12,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: SwordUV
-    second: {fileID: 2800000, guid: 7d61e5b0a2236f74985800cb366857e2, type: 3}
+      name: SwordUV11_1
+    second: {fileID: 2800000, guid: d41c8db4e0fd31b4fb2f95193c69426a, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
