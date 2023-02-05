@@ -31,7 +31,7 @@ namespace OurGame.Units
 
         private void FixedUpdate()
         {
-            if (m_currentEnemy != null) { return; } //if we have an enemy/foe we don't search for a new one
+            if (m_currentEnemy != null || IsDead()) { return; } //if we have an enemy/foe we don't search for a new one
             CheckForEnemy();
         }
         private void CheckForEnemy()
