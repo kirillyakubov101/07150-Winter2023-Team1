@@ -6,13 +6,14 @@ namespace OurGame.Spawn
 {
     public class FriendlySpawner : MonoBehaviour
     {
-        [SerializeField] private Transform[] m_lanes = new Transform[3];
+        [SerializeField] private Lane[] m_lanes = new Lane[3];
 
         [SerializeField] private Unit m_Kngiht;
 
-        private Transform m_activeLane = null;
+        private Lane m_activeLane = null;
         private bool canSpawn = true;
         private float spawnCoolDown = 1.2f;
+       
 
         private void Start()
         {
@@ -22,13 +23,14 @@ namespace OurGame.Spawn
         public void SetActiveLane(int index)
         {
             m_activeLane = m_lanes[index];
+            m_activeLane.AnimateLane();
         }
 
         public void SpawnKnight()
         {
             if (!canSpawn) { return; }
             canSpawn = false;
-            Instantiate(m_Kngiht, m_activeLane);
+            Instantiate(m_Kngiht, m_activeLane.transform);
             StartCoroutine(SpawnProccess());
         }
 
