@@ -4,13 +4,25 @@ namespace OurGame.Spawn
 {
     public class Lane : MonoBehaviour
     {
-        [SerializeField] private Animator m_animator;
-
-        readonly int animateLaneHash = Animator.StringToHash("Show");
-
-        public void AnimateLane()
+        [SerializeField] private MeshRenderer m_renderer;
+        [Tooltip("If you will change the time of the lane showcase, change it to all 3 lanes!")]
+        [SerializeField] float hideLaneDelay = 2f;
+        
+        public void DisplayLane()
         {
-            m_animator.SetTrigger(animateLaneHash);
+            if (m_renderer.enabled) { return; }
+            ShowLaneProcess();
+            Invoke(nameof(HideLane), hideLaneDelay);
+        }
+
+        private void ShowLaneProcess()
+        {
+            m_renderer.enabled = true;
+        }
+
+        private void HideLane()
+        {
+            m_renderer.enabled = false;
         }
 
     } 

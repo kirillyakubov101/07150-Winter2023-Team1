@@ -23,7 +23,7 @@ namespace OurGame.Spawn
         public void SetActiveLane(int index)
         {
             m_activeLane = m_lanes[index];
-            m_activeLane.AnimateLane();
+            m_activeLane.DisplayLane();
         }
 
         public void SpawnKnight()
