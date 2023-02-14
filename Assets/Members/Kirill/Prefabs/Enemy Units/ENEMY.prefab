@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b86d03b4730b0fb498e21865ab804767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_unit: {fileID: 5305522382036008309}
 --- !u!114 &5231127705032277408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed251e557a07e89428cbdba80fb8b463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_unit: {fileID: 5305522382036008309}
 --- !u!114 &8072228047105763274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 271376275eacb6e4ca686cfb09674eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_unit: {fileID: 5305522382036008309}
 --- !u!114 &5305522382036008309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +142,8 @@ MonoBehaviour:
   m_unitDamage: 0
   m_moveSpeed: 10
   m_attackRange: 3
+  m_maxHealth: 0
+  m_health: 0
   m_enemyLayerMask:
     serializedVersion: 2
     m_Bits: 64

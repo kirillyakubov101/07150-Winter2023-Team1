@@ -24,7 +24,7 @@ namespace OurGame.Units
 
        
 
-        private void Start()
+        private void OnEnable()
         {
             this.m_health = this.m_maxHealth; //init
         }

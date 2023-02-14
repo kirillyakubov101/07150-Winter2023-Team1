@@ -14,7 +14,11 @@ namespace OurGame.State
 
         public override void EnterState()
         {
-           this.m_unit.Animator.CrossFadeInFixedTime(MoveStateAnimHash, CrossFadeDuration);
+            if (this.m_unit)
+            {
+                this.m_unit.Animator.CrossFadeInFixedTime(MoveStateAnimHash, CrossFadeDuration);
+            }
+          
         }
 
         public override void ExitState()
