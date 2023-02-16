@@ -3036,6 +3036,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2040980987471947200, guid: 91d0cdbd70d92534db2944a72c595cfe, type: 3}
+      propertyPath: m_attackRange
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2040980987471947200, guid: 91d0cdbd70d92534db2944a72c595cfe, type: 3}
       propertyPath: m_animatorOverrideController
       value: 
       objectReference: {fileID: 22100000, guid: ebf129cab6f97c344820158c84c5891d, type: 2}
