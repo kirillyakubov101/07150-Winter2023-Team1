@@ -1,4 +1,6 @@
 using UnityEngine;
+using OurGame.Units;
+using OurGame.Spawn;
 
 namespace OurGame.State
 {
@@ -14,8 +16,20 @@ namespace OurGame.State
 
         public override void EnterState()
         {
-            this.m_unit.Animator.CrossFadeInFixedTime(MoveStateAnimHash, CrossFadeDuration);
-            Destroy(this.m_unit);
+            if(this.m_unit)
+            {
+                this.m_unit.Animator.CrossFadeInFixedTime(MoveStateAnimHash, CrossFadeDuration);
+
+
+                //if friendly do simple death
+                //if enemy, pooling death system
+                if (this.m_unit is EnemyUnit)
+                {
+                    Invoke(nameof(DelayRemoval),3f);
+                }
+
+            }
+
         }
 
         public override void ExitState()
@@ -26,6 +40,11 @@ namespace OurGame.State
         public override void Tick(float deltaTime)
         {
             //
+        }
+
+        private void DelayRemoval()
+        {
+            gameObject.SetActive(false);
         }
     }
 }

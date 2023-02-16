@@ -8,10 +8,11 @@ namespace OurGame.State
         [SerializeField] private State[] m_states; // |1 - Move | 2 - Attack| 3- Death|
 
 
-        private void Start()
-        {
-            InitStartingState();
-        }
+        //private void Start()
+        //{
+        //    m_currentState = m_states[0]; //First state, MoveState
+        //    m_currentState.EnterState();
+        //}
 
 
         //-------------MAIN LOOP-----------
@@ -23,10 +24,16 @@ namespace OurGame.State
         }
         //---------------------------------------
 
-        private void InitStartingState()
+        private void OnEnable()
         {
-            m_currentState = m_states[0]; //First state, MoveState
+            m_currentState = m_states[0];
             m_currentState.EnterState();
+        }
+
+        private void OnDisable()
+        {
+            m_currentState.ExitState();
+            m_currentState = null;
         }
 
         public void SwitchState(State.StateName newState)
