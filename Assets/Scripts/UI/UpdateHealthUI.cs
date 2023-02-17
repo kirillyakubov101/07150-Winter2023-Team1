@@ -8,7 +8,7 @@ namespace OurGame
     {
         [SerializeField] private Image HpBarImage;
         [SerializeField] private Unit m_Unit;
-        [SerializeField] private Canvas m_Canvas;
+        [SerializeField] private GameObject m_Hp_UI_Container;
 
         private void OnEnable()
         {
@@ -22,8 +22,8 @@ namespace OurGame
 
         private void UpdateHealth(float amount)
         {
-            HpBarImage.fillAmount = amount;
-            m_Canvas.gameObject.SetActive(true);
+            m_Hp_UI_Container.SetActive(true);
+            HpBarImage.fillAmount = amount; 
         }
 
     }

@@ -83,7 +83,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42353eb1a5c9d641ac4c15cff28ef92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_currentState: {fileID: 0}
   m_states:
   - {fileID: 4765161850881240503}
   - {fileID: 5989414364320967575}
@@ -196,7 +195,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Health Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 5045933596327505170, guid: c74ebbc19dd26aa4daacc4bdd81d9fd3, type: 3}
+    - target: {fileID: 5556805127428031675, guid: c74ebbc19dd26aa4daacc4bdd81d9fd3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7827856118683225561, guid: c74ebbc19dd26aa4daacc4bdd81d9fd3, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -204,10 +207,6 @@ PrefabInstance:
       propertyPath: m_Unit
       value: 
       objectReference: {fileID: 2040980987471947200}
-    - target: {fileID: 7851690437216037073, guid: c74ebbc19dd26aa4daacc4bdd81d9fd3, type: 3}
-      propertyPath: m_Canvas
-      value: 
-      objectReference: {fileID: 372894963477961111}
     - target: {fileID: 8773183458354203336, guid: c74ebbc19dd26aa4daacc4bdd81d9fd3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -295,11 +294,6 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: c74ebbc19dd26aa4daacc4bdd81d9fd3, type: 3}
---- !u!223 &372894963477961111 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 405591632193665822, guid: c74ebbc19dd26aa4daacc4bdd81d9fd3, type: 3}
-  m_PrefabInstance: {fileID: 39470880788898441}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8740538346434848833 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8773183458354203336, guid: c74ebbc19dd26aa4daacc4bdd81d9fd3, type: 3}

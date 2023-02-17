@@ -174,7 +174,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 500fb3c69d6defd41ab7c718e0c78355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_canvas: {fileID: 5045933596327505170}
 --- !u!114 &7851690437216037073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HpBarImage: {fileID: 3904046038624141119}
   m_Unit: {fileID: 0}
+  m_Hp_UI_Container: {fileID: 7827856118683225561}
 --- !u!1 &7827856118683225561
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,10 +223,10 @@ RectTransform:
   m_Father: {fileID: 8773183458354203336}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.25, y: 0.6304678}
-  m_AnchorMax: {x: 0.7503486, y: 0.7328043}
+  m_AnchorMin: {x: 0.3483609, y: 0.68878806}
+  m_AnchorMax: {x: 0.6485097, y: 0.7328043}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0.00000011175871, y: -0.00000008940697}
+  m_SizeDelta: {x: 0, y: -0.000000029802322}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8280375210772255062
 CanvasRenderer:

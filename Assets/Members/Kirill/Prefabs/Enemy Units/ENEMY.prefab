@@ -83,7 +83,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42353eb1a5c9d641ac4c15cff28ef92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_currentState: {fileID: 0}
   m_states:
   - {fileID: 6460236900981209984}
   - {fileID: 5231127705032277408}
@@ -218,6 +217,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5045933596327505170, guid: c74ebbc19dd26aa4daacc4bdd81d9fd3, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7827856118683225561, guid: c74ebbc19dd26aa4daacc4bdd81d9fd3, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7851690437216037073, guid: c74ebbc19dd26aa4daacc4bdd81d9fd3, type: 3}
@@ -228,6 +231,10 @@ PrefabInstance:
       propertyPath: m_Canvas
       value: 
       objectReference: {fileID: 944888613965405978}
+    - target: {fileID: 7851690437216037073, guid: c74ebbc19dd26aa4daacc4bdd81d9fd3, type: 3}
+      propertyPath: m_Hp_UI_Container
+      value: 
+      objectReference: {fileID: 7214267332049594845}
     - target: {fileID: 8773183458354203336, guid: c74ebbc19dd26aa4daacc4bdd81d9fd3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -318,6 +325,11 @@ PrefabInstance:
 --- !u!223 &944888613965405978 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 405591632193665822, guid: c74ebbc19dd26aa4daacc4bdd81d9fd3, type: 3}
+  m_PrefabInstance: {fileID: 629404714898695172}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7214267332049594845 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7827856118683225561, guid: c74ebbc19dd26aa4daacc4bdd81d9fd3, type: 3}
   m_PrefabInstance: {fileID: 629404714898695172}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &8177555743998160588 stripped

@@ -6,8 +6,6 @@ namespace OurGame.UI
 {
     public class LookAtCamera : MonoBehaviour
     {
-        [SerializeField] private GameObject m_canvas;
-
         private MainCamera mainCam;
 
         private void Start()
@@ -16,7 +14,7 @@ namespace OurGame.UI
         }
         private void LateUpdate()
         {
-            m_canvas.transform.forward = mainCam.transform.forward;
+            transform.forward = mainCam.transform.forward;
         }
     }
 }
