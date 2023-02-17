@@ -1,11 +1,11 @@
 using UnityEngine;
 using OurGame.State;
+using System;
 
 namespace OurGame.Units
 {
     public abstract class Unit : MonoBehaviour
     {
-        [SerializeField] private string m_unitName;                              //TODO: USE SCRIPTABLE OBJECTS
         [SerializeField] private float m_unitDamage;                             //unit damage
         [SerializeField] private float m_moveSpeed = 10f;                        //unit move speed
         [SerializeField] private float m_attackRange = 5f;                       //unit attack range
@@ -25,6 +25,8 @@ namespace OurGame.Units
         public StateMachine StateMachine { get => m_stateMachine; }
         public float UnitDamage { get => m_unitDamage; }
 
+        //Take Damage Delegate / Event
+        public event Action<float> OnTakeDamage;
       
 
         private void OnEnable()
@@ -55,6 +57,8 @@ namespace OurGame.Units
         {
             this.m_health = Mathf.Max(this.m_health - damage, 0f);
 
+            OnTakeDamage?.Invoke(GetHealthPercent());
+
             if (IsDead())
             {
                 StateMachine.SwitchState(State.State.StateName.DEATH);
@@ -64,6 +68,11 @@ namespace OurGame.Units
         public bool IsDead()
         {
             return this.m_health <= 0f;
+        }
+
+        private float GetHealthPercent()
+        {
+            return this.m_health / this.m_maxHealth;
         }
     }
 }
