@@ -31,7 +31,7 @@ namespace OurGame.State
             }
         }
 
-        //anim evennt
+        //anim event for melee units
         private void AttackAnimEvent()
         {
             if (this.m_unit.IsDead()) { return; }
@@ -43,6 +43,12 @@ namespace OurGame.State
 
             this.m_unit.CurrentEnemy.TakeDamage(this.m_unit.UnitDamage);
 
+        }
+
+        //anim event for ranged units
+        private void LaunchProjectile()
+        {
+           //Launch
         }
     }
 }

@@ -4,9 +4,9 @@ namespace OurGame.State
 {
     public class StateMachine : MonoBehaviour
     {
-        [SerializeField] private State m_currentState;
         [SerializeField] private State[] m_states; // |1 - Move | 2 - Attack| 3- Death|
 
+        private State m_currentState;
 
         //private void Start()
         //{
