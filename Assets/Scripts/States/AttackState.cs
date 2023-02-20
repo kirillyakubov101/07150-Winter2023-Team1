@@ -29,6 +29,22 @@ namespace OurGame.State
                 this.m_unit.StateMachine.SwitchState(StateName.MOVE);
                 return;
             }
+
+            if (this.m_unit.CurrentEnemy != null && !IsEnemyInRange())
+            {
+                this.m_unit.StateMachine.SwitchState(StateName.MOVE);
+            }
+        }
+
+        private bool IsEnemyInRange()
+        {
+            Vector3 thisPosition = transform.position;
+            Vector3 enemyPos = this.m_unit.CurrentEnemy.transform.position;
+            Vector3 offset = enemyPos - thisPosition;
+
+            float sqrMagnitude = offset.sqrMagnitude;
+
+            return sqrMagnitude <= this.m_unit.AttackRange * this.m_unit.AttackRange;
         }
 
         //anim event for melee units
@@ -38,6 +54,7 @@ namespace OurGame.State
             if(this.m_unit.CurrentEnemy == null || this.m_unit.CurrentEnemy.IsDead())
             {
                 this.m_unit.StateMachine.SwitchState(StateName.MOVE);
+                this.m_unit.CurrentEnemy = null;
                 return;
             }
 

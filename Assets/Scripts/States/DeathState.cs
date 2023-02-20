@@ -1,7 +1,4 @@
 using UnityEngine;
-using OurGame.Units;
-using OurGame.Spawn;
-
 namespace OurGame.State
 {
     public class DeathState : State
@@ -19,15 +16,6 @@ namespace OurGame.State
             if(this.m_unit)
             {
                 this.m_unit.Animator.CrossFadeInFixedTime(MoveStateAnimHash, CrossFadeDuration);
-
-
-                //if friendly do simple death
-                //if enemy, pooling death system
-                if (this.m_unit is EnemyUnit)
-                {
-                    Invoke(nameof(DelayRemoval),3f);
-                }
-
             }
 
         }
@@ -42,10 +30,6 @@ namespace OurGame.State
             //
         }
 
-        private void DelayRemoval()
-        {
-            gameObject.SetActive(false);
-        }
     }
 }
 
