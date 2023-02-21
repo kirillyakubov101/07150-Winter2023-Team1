@@ -30,14 +30,16 @@ namespace OurGame.Spawn
                 //if the object can be created or pulled from pool
                 if(_poolSystem.CreateObject(out GameObject newInst))
                 {
-                    //print("Creating");
-                    newInst.SetActive(true);
                     int randomLaneIndex = Random.Range(0, _Lanes.Length);
                     newInst.transform.parent = _Lanes[randomLaneIndex];
 
-                    yield return null;
                     newInst.transform.position = _Lanes[randomLaneIndex].position;
                     newInst.transform.rotation = _Lanes[randomLaneIndex].rotation;
+
+
+
+                    yield return null;
+                    newInst.SetActive(true);
                 }
                 
                 yield return TimeToWait;

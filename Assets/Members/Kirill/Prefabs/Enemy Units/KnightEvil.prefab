@@ -1561,6 +1561,10 @@ PrefabInstance:
       propertyPath: m_unitDamage
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5305522382036008309, guid: 85675186a2655a243b9b15526fea368c, type: 3}
+      propertyPath: m_attackRange
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7460075899838639640, guid: 85675186a2655a243b9b15526fea368c, type: 3}
       propertyPath: m_RootOrder
       value: 0

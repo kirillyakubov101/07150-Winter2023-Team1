@@ -34,6 +34,7 @@ namespace OurGame.Units
         private void OnEnable()
         {
             this.m_health = this.m_maxHealth; //init
+            m_currentEnemy = null;
         }
 
         private void FixedUpdate()
@@ -47,10 +48,11 @@ namespace OurGame.Units
            
             if (hasHit)
             {
-                if(hitInfo.transform.TryGetComponent(out Unit unit))
+                if(hitInfo.transform.TryGetComponent(out Unit unit) && !unit.IsDead())
                 {
                     m_currentEnemy = unit;
                     m_stateMachine.SwitchState(State.State.StateName.ATTACK);
+                    print("i am attacking");
                 }
             }
         }

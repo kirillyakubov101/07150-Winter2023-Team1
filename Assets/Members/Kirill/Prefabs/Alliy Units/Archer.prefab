@@ -413,6 +413,37 @@ Transform:
   m_Father: {fileID: 1882179679964833405}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2389063753730141452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2382260358842102051}
+  m_Layer: 6
+  m_Name: Shooting Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &2382260358842102051
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2389063753730141452}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.074, z: 3.131}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6352479674474142195}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2536650804337424138
 GameObject:
   m_ObjectHideFlags: 0
@@ -3037,12 +3068,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2040980987471947200, guid: 91d0cdbd70d92534db2944a72c595cfe, type: 3}
       propertyPath: m_attackRange
-      value: 50
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 2040980987471947200, guid: 91d0cdbd70d92534db2944a72c595cfe, type: 3}
       propertyPath: m_animatorOverrideController
       value: 
       objectReference: {fileID: 22100000, guid: ebf129cab6f97c344820158c84c5891d, type: 2}
+    - target: {fileID: 5989414364320967575, guid: 91d0cdbd70d92534db2944a72c595cfe, type: 3}
+      propertyPath: m_shootingPoint
+      value: 
+      objectReference: {fileID: 2382260358842102051}
+    - target: {fileID: 5989414364320967575, guid: 91d0cdbd70d92534db2944a72c595cfe, type: 3}
+      propertyPath: m_projectilePrefab
+      value: 
+      objectReference: {fileID: 7668948318183716999, guid: 286a2e57bfde63042b0b60a9a7abf1f3, type: 3}
     - target: {fileID: 8849719420550971650, guid: 91d0cdbd70d92534db2944a72c595cfe, type: 3}
       propertyPath: m_Avatar
       value: 
@@ -3104,6 +3143,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8935596645438699567, guid: 91d0cdbd70d92534db2944a72c595cfe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5163383400490128469}
+    - targetCorrespondingSourceObject: {fileID: 8935596645438699567, guid: 91d0cdbd70d92534db2944a72c595cfe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2382260358842102051}
   m_SourcePrefab: {fileID: 100100000, guid: 91d0cdbd70d92534db2944a72c595cfe, type: 3}
 --- !u!4 &6352479674474142195 stripped
 Transform:
