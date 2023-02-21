@@ -24,19 +24,22 @@ namespace OurGame.Units
         public Unit CurrentEnemy { get => m_currentEnemy; set => m_currentEnemy = value; }
         public StateMachine StateMachine { get => m_stateMachine; }
         public float UnitDamage { get => m_unitDamage; }
+        public float AttackRange { get => m_attackRange;}
 
         //Take Damage Delegate / Event
         public event Action<float> OnTakeDamage;
+        
       
 
         private void OnEnable()
         {
             this.m_health = this.m_maxHealth; //init
+            m_currentEnemy = null;
         }
 
         private void FixedUpdate()
         {
-            if (m_currentEnemy != null || IsDead()) { return; } //if we have an enemy/foe we don't search for a new one
+            if (m_currentEnemy != null || this.IsDead()) { return; } //if we have an enemy/foe we don't search for a new one
             CheckForEnemy();
         }
         private void CheckForEnemy()
@@ -45,16 +48,18 @@ namespace OurGame.Units
            
             if (hasHit)
             {
-                if(hitInfo.transform.TryGetComponent(out Unit unit))
+                if(hitInfo.transform.TryGetComponent(out Unit unit) && !unit.IsDead())
                 {
                     m_currentEnemy = unit;
                     m_stateMachine.SwitchState(State.State.StateName.ATTACK);
+                    print("i am attacking");
                 }
             }
         }
 
-        public void TakeDamage(float damage)
+        public virtual void TakeDamage(float damage)
         {
+            if (IsDead()) { return; }
             this.m_health = Mathf.Max(this.m_health - damage, 0f);
 
             OnTakeDamage?.Invoke(GetHealthPercent());
@@ -64,6 +69,7 @@ namespace OurGame.Units
                 StateMachine.SwitchState(State.State.StateName.DEATH);
             }
         }
+
 
         public bool IsDead()
         {

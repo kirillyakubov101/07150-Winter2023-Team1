@@ -113,6 +113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_unit: {fileID: 2040980987471947200}
+  m_projectilePrefab: {fileID: 0}
+  m_shootingPoint: {fileID: 0}
 --- !u!114 &7746278138781446653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_unit: {fileID: 2040980987471947200}
+  m_collider: {fileID: 8356033383435052505}
 --- !u!114 &2040980987471947200
 MonoBehaviour:
   m_ObjectHideFlags: 0

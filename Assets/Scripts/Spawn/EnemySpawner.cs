@@ -12,20 +12,6 @@ namespace OurGame.Spawn
         [SerializeField] private Transform[] _Lanes;
         [SerializeField] private float spawnCd;
 
-        private static EnemySpawner instance;
-
-        private void Awake()
-        {
-            if(instance == null)
-            {
-                instance = this;
-            }
-            else
-            {
-                Destroy(this);
-            }
-        }
-
         private void Start()
         {
             _poolSystem = new PoolSystem(_enemiesPrefabs);
@@ -37,23 +23,27 @@ namespace OurGame.Spawn
         {
             yield return null;
 
-            while(true)
+            WaitForSeconds TimeToWait = new WaitForSeconds(spawnCd);
+
+            while (true)
             {
-                var newInst = _poolSystem.CreateObject();
+                //if the object can be created or pulled from pool
+                if(_poolSystem.CreateObject(out GameObject newInst))
+                {
+                    int randomLaneIndex = Random.Range(0, _Lanes.Length);
+                    newInst.transform.parent = _Lanes[randomLaneIndex];
 
-                newInst.SetActive(true);
-                int randomLaneIndex = Random.Range(0, _Lanes.Length);
-                newInst.transform.parent = _Lanes[randomLaneIndex];
-
-                yield return null;
-                newInst.transform.position = _Lanes[randomLaneIndex].position;
-                newInst.transform.rotation = _Lanes[randomLaneIndex].rotation;
+                    newInst.transform.position = _Lanes[randomLaneIndex].position;
+                    newInst.transform.rotation = _Lanes[randomLaneIndex].rotation;
 
 
-                yield return new WaitForSeconds(spawnCd);
+
+                    yield return null;
+                    newInst.SetActive(true);
+                }
+                
+                yield return TimeToWait;
             }
         }
-
-        public static EnemySpawner Instance { get { return instance; } private set { } }
     }
 }

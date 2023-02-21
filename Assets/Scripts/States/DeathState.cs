@@ -1,13 +1,12 @@
 using UnityEngine;
-using OurGame.Units;
-using OurGame.Spawn;
-
 namespace OurGame.State
 {
     public class DeathState : State
     {
         private readonly int MoveStateAnimHash = Animator.StringToHash("Death");
         private const float CrossFadeDuration = 0.1f;
+
+        [SerializeField] private Collider m_collider;
 
         private DeathState()
         {
@@ -19,22 +18,15 @@ namespace OurGame.State
             if(this.m_unit)
             {
                 this.m_unit.Animator.CrossFadeInFixedTime(MoveStateAnimHash, CrossFadeDuration);
-
-
-                //if friendly do simple death
-                //if enemy, pooling death system
-                if (this.m_unit is EnemyUnit)
-                {
-                    Invoke(nameof(DelayRemoval),3f);
-                }
-
             }
+
+            m_collider.enabled = false;
 
         }
 
         public override void ExitState()
         {
-            //
+            m_collider.enabled = true;
         }
 
         public override void Tick(float deltaTime)
@@ -42,10 +34,6 @@ namespace OurGame.State
             //
         }
 
-        private void DelayRemoval()
-        {
-            gameObject.SetActive(false);
-        }
     }
 }
 

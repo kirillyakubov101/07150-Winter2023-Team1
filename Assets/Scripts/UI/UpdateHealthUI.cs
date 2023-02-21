@@ -13,6 +13,7 @@ namespace OurGame
         private void OnEnable()
         {
             m_Unit.OnTakeDamage += UpdateHealth;
+            HpBarImage.fillAmount = 1;
         }
 
         private void OnDestroy()
