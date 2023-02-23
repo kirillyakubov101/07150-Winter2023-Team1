@@ -17,8 +17,6 @@ namespace OurGame.UI
         private void OnDestroy()
         {
             FriendlySpawner.OnCooldownStart -= CoolDownEffect;
-
-            print("REMOVE THIS");
         }
 
         private void CoolDownEffect()
