@@ -2,7 +2,7 @@ using OurGame.Units;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace OurGame
+namespace OurGame.UI
 {
     public class UpdateHealthUI : MonoBehaviour
     {

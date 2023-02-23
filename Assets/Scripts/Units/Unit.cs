@@ -1,6 +1,7 @@
 using UnityEngine;
 using OurGame.State;
 using System;
+using OurGame.UI;
 
 namespace OurGame.Units
 {
@@ -14,6 +15,7 @@ namespace OurGame.Units
         [SerializeField] private LayerMask m_enemyLayerMask = new LayerMask();   //the layer it looks for as opponent
         [SerializeField] private StateMachine m_stateMachine;                    //the state machine to change states
         [SerializeField] private Transform m_orientation;                        //the transform to raycast from
+        [SerializeField] private Transform m_canvasSpace;
 
         [field:SerializeField] public Animator Animator { get; private set; }
 
@@ -28,8 +30,6 @@ namespace OurGame.Units
 
         //Take Damage Delegate / Event
         public event Action<float> OnTakeDamage;
-        
-      
 
         private void OnEnable()
         {
@@ -52,7 +52,6 @@ namespace OurGame.Units
                 {
                     m_currentEnemy = unit;
                     m_stateMachine.SwitchState(State.State.StateName.ATTACK);
-                    print("i am attacking");
                 }
             }
         }
@@ -63,6 +62,7 @@ namespace OurGame.Units
             this.m_health = Mathf.Max(this.m_health - damage, 0f);
 
             OnTakeDamage?.Invoke(GetHealthPercent());
+            TextFactory.Instance.CreateDamageText(damage, m_canvasSpace);
 
             if (IsDead())
             {
