@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using OurGame.Units;
+using System;
 
 namespace OurGame.Spawn
 {
@@ -13,9 +14,11 @@ namespace OurGame.Spawn
 
         private Lane m_activeLane = null;
         private bool canSpawn = true;
-        private float spawnCoolDown = 1.2f;
         private Coroutine m_Coroutine;
-       
+
+        public static event Action OnCooldownStart;
+
+        public const float c_spawnCoolDown = 1.5f;
 
         private void Start()
         {
@@ -47,9 +50,10 @@ namespace OurGame.Spawn
 
         private IEnumerator SpawnProccess()
         {
-            yield return new WaitForSeconds(spawnCoolDown);
-            canSpawn = true;
+            OnCooldownStart?.Invoke(); //notify images on the recruit UI to show cooldowns
+            yield return new WaitForSeconds(c_spawnCoolDown);
 
+            canSpawn = true;
             m_Coroutine = null;
         }
     }

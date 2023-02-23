@@ -6,7 +6,7 @@ namespace Pooling
     [System.Serializable]
     public class PoolSystem
     {
-        private const int MAX_SPAWN_COUNT = 1;
+        private const int MAX_SPAWN_COUNT = 10;
         private GameObject[] objectPrefabs;
         private Queue<GameObject> m_spawnQueue = new Queue<GameObject>();
         private int spawnCount = 0;

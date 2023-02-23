@@ -1,9 +1,9 @@
 using UnityEngine;
-
 using MainCamera = UnityEngine.Camera;
 
 namespace OurGame.UI
 {
+
     public class LookAtCamera : MonoBehaviour
     {
         private MainCamera mainCam;

@@ -17,7 +17,6 @@ namespace OurGame.State
 
         //this is the offset to add to the attack range when checking "OutOfRange" functionality
         private const float c_offsetRange = 3f;
-        private float m_acceptableRange;
 
         private AttackState()
         {
@@ -29,8 +28,6 @@ namespace OurGame.State
         public override void EnterState()
         {
             this.m_unit.Animator.CrossFadeInFixedTime(MoveStateAnimHash, CrossFadeDuration);
-
-            m_acceptableRange = (this.m_unit.AttackRange * this.m_unit.AttackRange) + c_offsetRange;
         }
 
         public override void ExitState()
@@ -52,7 +49,6 @@ namespace OurGame.State
                 checkInRangeTimer = 0f;
                 if(IsEnemyOutOfRange())
                 {
-                    print("leaving due to distance");
                     LeaveToMoveState();
                     return;
                 }
@@ -90,7 +86,6 @@ namespace OurGame.State
             if(this.m_unit.CurrentEnemy == null || this.m_unit.CurrentEnemy.IsDead())
             {
                 LeaveToMoveState();
-                print("leaving 3");
                 return;
             }
 
@@ -107,7 +102,6 @@ namespace OurGame.State
             if (this.m_unit.CurrentEnemy == null || this.m_unit.CurrentEnemy.IsDead())
             {
                 LeaveToMoveState();
-                print("leaving 4");
                 return;
             }
 

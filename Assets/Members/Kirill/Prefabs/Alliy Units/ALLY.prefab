@@ -151,6 +151,7 @@ MonoBehaviour:
     m_Bits: 128
   m_stateMachine: {fileID: 3122763820937612689}
   m_orientation: {fileID: 409719643017538212}
+  m_canvasSpace: {fileID: 8740538346434848833}
   <Animator>k__BackingField: {fileID: 8849719420550971650}
 --- !u!136 &8356033383435052505
 CapsuleCollider:
