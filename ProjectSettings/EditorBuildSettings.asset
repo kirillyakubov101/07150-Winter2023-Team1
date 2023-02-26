@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: a97ed997bea46794bae84d7fc10254ee
+  - enabled: 1
+    path: Assets/Members/Kirill/Sandbox.unity
+    guid: 4b3da29a9474c0b49b48b11d7c565b9b
   m_configObjects: {}
