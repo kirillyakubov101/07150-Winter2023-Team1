@@ -7,7 +7,8 @@ namespace OurGame.Spawn
         [SerializeField] private MeshRenderer m_renderer;
         [Tooltip("If you will change the time of the lane showcase, change it to all 3 lanes!")]
         [SerializeField] float hideLaneDelay = 2f;
-        
+
+
         public void DisplayLane()
         {
             if (m_renderer.enabled) { return; }
@@ -24,6 +25,8 @@ namespace OurGame.Spawn
         {
             m_renderer.enabled = false;
         }
+
+     
 
     } 
 
