@@ -1,4 +1,5 @@
 using OurGame.Projectiles;
+using OurGame.Units;
 using UnityEngine;
 
 namespace OurGame.State
@@ -46,27 +47,28 @@ namespace OurGame.State
             //check in range evert "c_CheckInRangeCD" seconds to avoid too many calculations
             if (checkInRangeTimer >= c_CheckInRangeCD)
             {
-                checkInRangeTimer = 0f;
-                if(IsEnemyOutOfRange())
+                if (this.m_unit.CurrentEnemy is Unit)
                 {
-                    LeaveToMoveState();
-                    return;
+                    checkInRangeTimer = 0f;
+
+                    if (IsEnemyOutOfRange((Unit)this.m_unit.CurrentEnemy))
+                    {
+                        LeaveToMoveState();
+                        return;
+                    }
                 }
-
-
-
             }
 
             checkInRangeTimer += Time.deltaTime;
         }
 
-        private bool IsEnemyOutOfRange()
+        private bool IsEnemyOutOfRange(Unit target)
         {
             //float distance = Vector3.Distance(transform.position, this.m_unit.CurrentEnemy.transform.position);
             //float acceptable = this.m_unit.AttackRange + c_offsetRange;
 
-            float distance = (this.m_unit.CurrentEnemy.transform.position - transform.position).magnitude;
-            float acceptable = this.m_unit.AttackRange + c_offsetRange;
+            float distance = (target.transform.position - transform.position).magnitude;
+            float acceptable = target.AttackRange + c_offsetRange;
 
             return distance > acceptable;
         }

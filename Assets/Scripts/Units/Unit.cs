@@ -5,7 +5,7 @@ using OurGame.UI;
 
 namespace OurGame.Units
 {
-    public abstract class Unit : MonoBehaviour
+    public abstract class Unit : MonoBehaviour, IDamageable
     {
         [SerializeField] private float m_unitDamage;                             //unit damage
         [SerializeField] private float m_moveSpeed = 10f;                        //unit move speed
@@ -20,10 +20,10 @@ namespace OurGame.Units
         [field:SerializeField] public Animator Animator { get; private set; }
 
 
-        private Unit m_currentEnemy;
+        private IDamageable m_currentEnemy;
 
         public float MoveSpeed { get => m_moveSpeed; }
-        public Unit CurrentEnemy { get => m_currentEnemy; set => m_currentEnemy = value; }
+        public IDamageable CurrentEnemy { get => m_currentEnemy; set => m_currentEnemy = value; }
         public StateMachine StateMachine { get => m_stateMachine; }
         public float UnitDamage { get => m_unitDamage; }
         public float AttackRange { get => m_attackRange;}
@@ -48,9 +48,9 @@ namespace OurGame.Units
            
             if (hasHit)
             {
-                if(hitInfo.transform.TryGetComponent(out Unit unit) && !unit.IsDead())
+                if(hitInfo.transform.TryGetComponent(out IDamageable damageable) && !damageable.IsDead())
                 {
-                    m_currentEnemy = unit;
+                    m_currentEnemy = damageable;
                     m_stateMachine.SwitchState(State.State.StateName.ATTACK);
                 }
             }
