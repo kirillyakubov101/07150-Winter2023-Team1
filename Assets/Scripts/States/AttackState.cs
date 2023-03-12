@@ -19,11 +19,10 @@ namespace OurGame.State
         //this is the offset to add to the attack range when checking "OutOfRange" functionality
         private const float c_offsetRange = 3f;
 
+
         private AttackState()
         {
             this.m_currentStateName = StateName.ATTACK;
-
-           
         }
 
         public override void EnterState()
@@ -44,25 +43,27 @@ namespace OurGame.State
                 return;
             }
 
-            //check in range evert "c_CheckInRangeCD" seconds to avoid too many calculations
-            if (checkInRangeTimer >= c_CheckInRangeCD)
+            if(this.m_unit.CurrentEnemy is Unit)
             {
-                if (this.m_unit.CurrentEnemy is Unit)
+                Unit unit = (Unit)this.m_unit.CurrentEnemy;
+
+                //check in range every "c_CheckInRangeCD" seconds to avoid too many calculations
+                if (checkInRangeTimer >= c_CheckInRangeCD)
                 {
                     checkInRangeTimer = 0f;
 
-                    if (IsEnemyOutOfRange((Unit)this.m_unit.CurrentEnemy))
+                    if (IsUnitOutOfRange(unit))
                     {
                         LeaveToMoveState();
                         return;
                     }
                 }
-            }
 
-            checkInRangeTimer += Time.deltaTime;
+                checkInRangeTimer += Time.deltaTime;
+            }
         }
 
-        private bool IsEnemyOutOfRange(Unit target)
+        private bool IsUnitOutOfRange(Unit target)
         {
             //float distance = Vector3.Distance(transform.position, this.m_unit.CurrentEnemy.transform.position);
             //float acceptable = this.m_unit.AttackRange + c_offsetRange;
