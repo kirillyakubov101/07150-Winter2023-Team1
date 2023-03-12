@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public abstract class A_Tower : MonoBehaviour
+public abstract class A_Tower : MonoBehaviour, IDamageable
 {
     //Script needs to be a child component of any tower and requires an object with the TowerTargeting script component
 
@@ -123,6 +123,16 @@ public abstract class A_Tower : MonoBehaviour
     public float GetRange()
     {
         return range;
+    }
+
+    public void TakeDamage(float damage)
+    {
+
+    }
+
+    public bool IsDead()
+    {
+        return false;
     }
 
     #endregion

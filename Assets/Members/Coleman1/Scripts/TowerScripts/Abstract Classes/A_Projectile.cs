@@ -40,9 +40,10 @@ public abstract class A_Projectile : MonoBehaviour
 
             transform.LookAt(target.transform);
 
-            if (Vector3.Distance(transform.position, target.transform.position) < 5f)
+            if (Vector3.Distance(transform.position, target.transform.position) < .5f)
             {
                 target.TakeDamage(damage);
+                target = null;
 
                 if(hitSpawnPrefab != null)
                 {

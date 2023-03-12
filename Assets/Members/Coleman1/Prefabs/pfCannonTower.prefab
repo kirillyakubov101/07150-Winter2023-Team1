@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 621d601a914d93e44a1047ce76c7f884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionPoint: {x: 0, y: 0, z: 0}
+  collisionPoints: []
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -171,7 +171,7 @@ Transform:
   - {fileID: 4982425951022122944}
   - {fileID: 5207677262118589156}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4790944337945210937
 GameObject:
@@ -223,7 +223,7 @@ MonoBehaviour:
   enemiesInRange: []
   rotateTowardsTarget: 1
   attackSpeed: 1
-  projectileDamage: 10
+  projectileDamage: 250
   projectileSpeed: 10
   projectilePrefab: {fileID: 5886508952829008939, guid: 2cb424ad0ce135b4e8fe4d767957047e, type: 3}
   projectileSpawnPosition: {fileID: 7382446839306781109}
@@ -353,7 +353,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8593191565145714615}
   - component: {fileID: 4012143483321613035}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TowerCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,7 +383,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8933306858527637780}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 4, y: 4, z: 4}
