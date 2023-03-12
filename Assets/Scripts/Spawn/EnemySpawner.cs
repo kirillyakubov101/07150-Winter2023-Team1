@@ -41,6 +41,7 @@ namespace OurGame.Spawn
                     yield return null;
                     newInst.SetActive(true);
                 }
+             
                 
                 yield return TimeToWait;
             }
