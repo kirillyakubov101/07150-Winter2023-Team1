@@ -5,17 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class TowerTargeting : MonoBehaviour
+public abstract class A_Tower : MonoBehaviour
 {
-
     //Script needs to be a child component of any tower and requires an object with the TowerTargeting script component
 
     public enum TargetPriority
     {
-        First,
-        Close, //We calculate the magnitude to find the closest enemy in the list of enemies
-        Strong,
-        Last
+        First,  //First in the list of enemies
+        Strong, //Enemy with the most health
+        Last    //Last enemy in the list
     }
 
     #region Tower variables
@@ -87,24 +85,6 @@ public class TowerTargeting : MonoBehaviour
         {
             case TargetPriority.First: return enemiesInRange.First(); //targets the first enemy inside the list
 
-            case TargetPriority.Close:
-
-                EnemyUnit closest = null;
-                float distance = range; //the maximum distance
-
-                for(int i = 0; i < enemiesInRange.Count; i++)
-                {
-                    float dist = (this.transform.position - enemiesInRange[i].transform.position).sqrMagnitude;
-
-                    if(dist > distance)
-                    {
-                        closest = enemiesInRange[i];
-                        distance = dist;
-                    }
-                }
-
-                return closest;
-
                 //REQUIRES GETTER FOR HEALTH
 
             //case TargetPriority.Strong:
@@ -136,7 +116,7 @@ public class TowerTargeting : MonoBehaviour
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0);
 
             GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPosition.position, Quaternion.identity);
-            projectile.GetComponent<Projectile>().Initialize(currentEnemy, projectileDamage, projectileSpeed);
+            projectile.GetComponent<A_Projectile>().Initialize(currentEnemy, projectileDamage, projectileSpeed);
         }
     }
 

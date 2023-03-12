@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6325451830639377652}
   - component: {fileID: 8671426919630222642}
   - component: {fileID: 805499166920033716}
-  - component: {fileID: 1488529410129477117}
+  - component: {fileID: 1631147460113134518}
   m_Layer: 0
   m_Name: pfCannonBall
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1488529410129477117
+--- !u!114 &1631147460113134518
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5886508952829008939}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c58a8967ef256a4d97db1343e68ff26, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ac46ad60031e1d478dedb55c71a17ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10

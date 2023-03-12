@@ -10,11 +10,13 @@ public class TowerDetectEnemy : MonoBehaviour
 {
     #region Detection Variables
 
-    public Vector3 collisionPoint = Vector3.zero;
+    public Vector3[] collisionPoints; //The collision points detected in the raycast used to create the Gizmos an
+
+    [Header("Game Objects")]
 
     [SerializeField] private LayerMask enemyLayer;
 
-    [SerializeField] private TowerTargeting towerTargeting;
+    [SerializeField] private A_Tower towerTargeting;
 
     private GameObject hitObject;
 
@@ -42,25 +44,28 @@ public class TowerDetectEnemy : MonoBehaviour
 
         RaycastHit[] hits;
 
-        hits = Physics.RaycastAll(transform.position, transform.forward, towerTargeting.range, enemyLayer, QueryTriggerInteraction.Collide);
+        //Raycast all will return all objects that it detects within it's range and inside the enemy layer and add them to the array of Raycast Hits to access info about the hits
+        hits = Physics.RaycastAll(transform.position, transform.forward, towerTargeting.range, enemyLayer, QueryTriggerInteraction.Collide); 
+
+        collisionPoints = new Vector3[hits.Count()];
 
         if (hits != null)
         {
             for (int i = 0; i < hits.Length; i++)
             {
                 hitObject = hits[i].collider.gameObject;
-                collisionPoint = hits[i].point;
+                collisionPoints[i] = hits[i].point;
 
                 print(hits[i].collider.name);
 
                 if (hitObject.CompareTag("Enemy"))
                 {
-                    towerTargeting.enemiesInRange.Insert(i,hitObject.GetComponent<EnemyUnit>());
+                    towerTargeting.enemiesInRange.Insert(i,hitObject.GetComponent<EnemyUnit>()); //Ad the enemy to the list of enemies for the Tower
                 }
                 else
                 if (hits[i].collider.GetComponent<EnemyUnit>().IsDead())
                 {
-                    towerTargeting.enemiesInRange.Remove(hits[i].collider.GetComponent<EnemyUnit>());
+                    towerTargeting.enemiesInRange.Remove(hits[i].collider.GetComponent<EnemyUnit>()); //Removes the enemy from the list of enemies from the Tower
                     hitObject = null;
                 }
                 else
@@ -74,7 +79,11 @@ public class TowerDetectEnemy : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(collisionPoint, .5f);
+
+        foreach(Vector3 collider in collisionPoints)
+        {
+            Gizmos.DrawWireSphere(collider, .5f);
+        }
     }
 
     #endregion

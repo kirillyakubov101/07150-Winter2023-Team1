@@ -3,19 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public abstract class A_Projectile : MonoBehaviour
 {
 
     //Script is required to be a component of any projectile prefab fired from any tower
 
     #region Projectile Variables
 
+    [Header("Projectile Info")]
+
     [SerializeField] private int damage;
     [SerializeField] private float moveSpeed;
 
     private EnemyUnit target;
 
-    public GameObject hitSpawnPrefab;
+    [Header("Projectile Prefab")]
+
+    [SerializeField] public GameObject hitSpawnPrefab;
 
     public void Initialize(EnemyUnit target, int damage, float moveSpeed)
     {
