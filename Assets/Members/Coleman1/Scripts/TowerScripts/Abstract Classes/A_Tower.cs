@@ -127,7 +127,7 @@ public abstract class A_Tower : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
-
+        print("taking damage");
     }
 
     public bool IsDead()
