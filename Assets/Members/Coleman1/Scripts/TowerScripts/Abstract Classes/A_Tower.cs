@@ -20,7 +20,8 @@ public abstract class A_Tower : MonoBehaviour, IDamageable
 
     [Header("Basic")]
 
-    [SerializeField] public float range;
+    public float range;
+    public float health;
     [SerializeField] private TargetPriority priority;
 
     public List<EnemyUnit> enemiesInRange = new List<EnemyUnit>();
@@ -39,6 +40,7 @@ public abstract class A_Tower : MonoBehaviour, IDamageable
 
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform projectileSpawnPosition;
+    [SerializeField] private Transform towerPivot;
 
     private float lastAttackTimer;
 
@@ -112,8 +114,8 @@ public abstract class A_Tower : MonoBehaviour, IDamageable
     {
         if (rotateTowardsTarget)
         {
-            transform.LookAt(currentEnemy.transform);
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0);
+            towerPivot.LookAt(currentEnemy.transform);
+            towerPivot.eulerAngles = new Vector3(towerPivot.eulerAngles.x, towerPivot.eulerAngles.y, 0);
 
             GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPosition.position, Quaternion.identity);
             projectile.GetComponent<A_Projectile>().Initialize(currentEnemy, projectileDamage, projectileSpeed);
@@ -127,12 +129,20 @@ public abstract class A_Tower : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
-        print("taking damage");
+        this.health -= damage;
     }
 
     public bool IsDead()
     {
-        return false;
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     #endregion
