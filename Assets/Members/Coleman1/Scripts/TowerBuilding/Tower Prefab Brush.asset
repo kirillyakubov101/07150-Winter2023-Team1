@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Tower Prefab Brush
   m_EditorClassIdentifier: 
   m_Cells:
-  - {m_GameObject: {fileID: 4403586668688622646, guid: 5b1c8fdc755986148911937221e6913b, type: 3}, m_Offset: {x: 0, y: 0, z: 0}, m_Scale: {x: 2, y: 2, z: 2}, m_Orientation: {x: 0, y: 0, z: 0, w: 1}}
+  - m_GameObject: {fileID: 8435580986123749430, guid: 8d30bf0cf2f2ed54e83f931a1fef8261, type: 3}
+    m_Offset: {x: 0, y: 0, z: 0}
+    m_Scale: {x: 1, y: 1, z: 1}
+    m_Orientation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
   m_Size: {x: 1, y: 1, z: 1}
   m_Pivot: {x: 0, y: 0, z: 0}
   m_CanChangeZPosition: 0

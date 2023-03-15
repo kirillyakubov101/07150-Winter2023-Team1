@@ -137,7 +137,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  towerTargeting: {fileID: 2670050116825054626}
+  towerTargeting: {fileID: 4403586667104036056}
 --- !u!1 &4403586668688622646
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,9 +147,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1429769481774326113}
-  m_Layer: 0
+  - component: {fileID: 4403586667104036055}
+  - component: {fileID: 4403586667104036056}
+  m_Layer: 6
   m_Name: pfCannonTower
-  m_TagString: CantPlace
+  m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,17 +164,52 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4403586668688622646}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 65.79327, y: 1.4788399, z: 73.37359}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1630986689584983051}
-  - {fileID: 8593191565145714615}
   - {fileID: 4982425951022122944}
   - {fileID: 5207677262118589156}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4403586667104036055
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4403586668688622646}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 5, z: 5}
+  m_Center: {x: 0, y: 2.55, z: 0}
+--- !u!114 &4403586667104036056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4403586668688622646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222aeb07cd7f4c74d93ac30eba5b6a8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 50
+  health: 100
+  priority: 0
+  enemiesInRange: []
+  rotateTowardsTarget: 1
+  attackSpeed: 2
+  projectileDamage: 10
+  projectileSpeed: 20
+  projectilePrefab: {fileID: 5886508952829008939, guid: 2cb424ad0ce135b4e8fe4d767957047e, type: 3}
+  projectileSpawnPosition: {fileID: 7382446839306781109}
+  towerPivot: {fileID: 1630986689584983051}
 --- !u!1 &4790944337945210937
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,7 +219,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1630986689584983051}
-  - component: {fileID: 2670050116825054626}
   m_Layer: 0
   m_Name: CannonPivot
   m_TagString: Untagged
@@ -206,27 +242,6 @@ Transform:
   m_Father: {fileID: 1429769481774326113}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2670050116825054626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4790944337945210937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222aeb07cd7f4c74d93ac30eba5b6a8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  range: 50
-  priority: 0
-  enemiesInRange: []
-  rotateTowardsTarget: 1
-  attackSpeed: 1
-  projectileDamage: 250
-  projectileSpeed: 10
-  projectilePrefab: {fileID: 5886508952829008939, guid: 2cb424ad0ce135b4e8fe4d767957047e, type: 3}
-  projectileSpawnPosition: {fileID: 7382446839306781109}
 --- !u!1 &4985437869524390630
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,48 +358,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &8933306858527637780
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8593191565145714615}
-  - component: {fileID: 4012143483321613035}
-  m_Layer: 6
-  m_Name: TowerCollider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8593191565145714615
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8933306858527637780}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1429769481774326113}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &4012143483321613035
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8933306858527637780}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4, y: 4, z: 4}
-  m_Center: {x: 0, y: 2, z: 0}
