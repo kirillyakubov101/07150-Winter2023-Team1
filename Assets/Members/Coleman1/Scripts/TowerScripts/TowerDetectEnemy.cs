@@ -58,11 +58,8 @@ public class TowerDetectEnemy : MonoBehaviour
 
                 print(hits[i].collider.name);
 
-                if (hitObject.CompareTag("Enemy"))
-                {
-                    towerTargeting.enemiesInRange.Insert(i,hitObject.GetComponent<EnemyUnit>()); //Ad the enemy to the list of enemies for the Tower
-                }
-                else
+                towerTargeting.enemiesInRange.Insert(i, hitObject.GetComponent<EnemyUnit>()); //Ad the enemy to the list of enemies for the Tower
+
                 if (hits[i].collider.GetComponent<EnemyUnit>().IsDead())
                 {
                     towerTargeting.enemiesInRange.Remove(hits[i].collider.GetComponent<EnemyUnit>()); //Removes the enemy from the list of enemies from the Tower
