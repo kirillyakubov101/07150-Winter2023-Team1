@@ -15,7 +15,7 @@ namespace OurGame.Units
         [SerializeField] private LayerMask m_enemyLayerMask = new LayerMask();   //the layer it looks for as opponent
         [SerializeField] private StateMachine m_stateMachine;                    //the state machine to change states
         [SerializeField] private Transform m_orientation;                        //the transform to raycast from
-        [SerializeField] private Transform m_canvasSpace;
+        [SerializeField] protected Transform m_canvasSpace;
 
         [field:SerializeField] public Animator Animator { get; private set; }
 

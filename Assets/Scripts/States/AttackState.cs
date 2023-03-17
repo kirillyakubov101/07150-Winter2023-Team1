@@ -19,6 +19,7 @@ namespace OurGame.State
         //this is the offset to add to the attack range when checking "OutOfRange" functionality
         private const float c_offsetRange = 3f;
 
+        private Unit m_targetUnit;
 
         private AttackState()
         {
@@ -32,7 +33,8 @@ namespace OurGame.State
 
         public override void ExitState()
         {
-            this.m_unit.CurrentEnemy = null;
+           this.m_unit.CurrentEnemy = null;
+           this.m_targetUnit = null;
         }
 
         public override void Tick(float deltaTime)
@@ -43,33 +45,35 @@ namespace OurGame.State
                 return;
             }
 
-            if(this.m_unit.CurrentEnemy is Unit)
+            if(this.m_unit.CurrentEnemy is Unit && m_targetUnit == null)
             {
-                Unit unit = (Unit)this.m_unit.CurrentEnemy;
-
+                m_targetUnit = (Unit)this.m_unit.CurrentEnemy;
+            }
+          
+            if(m_targetUnit != null)
+            {
+                checkInRangeTimer += Time.deltaTime;
                 //check in range every "c_CheckInRangeCD" seconds to avoid too many calculations
                 if (checkInRangeTimer >= c_CheckInRangeCD)
                 {
                     checkInRangeTimer = 0f;
 
-                    if (IsUnitOutOfRange(unit))
+                    if (IsUnitOutOfRange())
                     {
                         LeaveToMoveState();
-                        return;
                     }
                 }
-
-                checkInRangeTimer += Time.deltaTime;
             }
+                
         }
 
-        private bool IsUnitOutOfRange(Unit target)
+        private bool IsUnitOutOfRange()
         {
-            //float distance = Vector3.Distance(transform.position, this.m_unit.CurrentEnemy.transform.position);
-            //float acceptable = this.m_unit.AttackRange + c_offsetRange;
+            float distance = Vector3.Distance(transform.position, m_targetUnit.transform.position);
+            float acceptable = this.m_unit.AttackRange + c_offsetRange;
 
-            float distance = (target.transform.position - transform.position).magnitude;
-            float acceptable = target.AttackRange + c_offsetRange;
+            //float distance = (m_targetUnit.transform.position - transform.position).magnitude;
+            //float acceptable = m_targetUnit.AttackRange + c_offsetRange;
 
             return distance > acceptable;
         }
@@ -77,7 +81,6 @@ namespace OurGame.State
         private void LeaveToMoveState()
         {
             this.m_unit.StateMachine.SwitchState(StateName.MOVE);
-            this.m_unit.CurrentEnemy = null;
         }
 
         
