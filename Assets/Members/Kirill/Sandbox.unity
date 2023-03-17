@@ -3732,11 +3732,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 466484422808812081, guid: bb3bb59511586bb45b69d816d6c2020d, type: 3}
       propertyPath: spawnCd
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 466484422808812081, guid: bb3bb59511586bb45b69d816d6c2020d, type: 3}
       propertyPath: maxSpawnUnits
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 466484422808812081, guid: bb3bb59511586bb45b69d816d6c2020d, type: 3}
       propertyPath: _enemiesPrefabs.Array.size
