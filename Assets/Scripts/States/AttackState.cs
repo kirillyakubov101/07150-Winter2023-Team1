@@ -1,5 +1,7 @@
 using OurGame.Projectiles;
 using OurGame.Units;
+using OurGame.VFX;
+using System.Collections;
 using UnityEngine;
 
 namespace OurGame.State
@@ -15,6 +17,11 @@ namespace OurGame.State
         [Header("ONLY FOR RANGED UNITS")][Tooltip("only for ranged units | keep null if melee")]
         [SerializeField] private Projectile m_projectilePrefab;
         [SerializeField] private Transform m_shootingPoint;
+
+        [Header("ONLT FOR MAGES")]
+        [SerializeField] private LineRenderer m_lineRenderer;
+        [SerializeField] private Vector3 m_castOffset;
+        [SerializeField] private float m_castTick = 0.7f;
 
         //this is the offset to add to the attack range when checking "OutOfRange" functionality
         private const float c_offsetRange = 3f;
@@ -35,6 +42,13 @@ namespace OurGame.State
         {
            this.m_unit.CurrentEnemy = null;
            this.m_targetUnit = null;
+
+            //for mages
+            if (m_lineRenderer)
+            {
+                m_lineRenderer.enabled = false;
+            }
+           
         }
 
         public override void Tick(float deltaTime)
@@ -83,7 +97,40 @@ namespace OurGame.State
             this.m_unit.StateMachine.SwitchState(StateName.MOVE);
         }
 
-        
+        #region Mage
+        private void MageSpellCast()
+        {
+            m_lineRenderer.enabled = true;
+            m_lineRenderer.SetPosition(0, m_lineRenderer.transform.position);
+          
+            StartCoroutine(CastSpellProcess());
+        }
+
+        private IEnumerator CastSpellProcess()
+        {
+            float timer = 0f;
+            ParticleSystem hitEffect = VFX_Factory.Instance.CreateMageImpactEffect(m_lineRenderer.transform);
+            hitEffect.Play();
+
+            while (m_targetUnit)
+            {
+                m_lineRenderer.SetPosition(1, m_targetUnit.transform.position + m_castOffset);
+                hitEffect.transform.position = m_targetUnit.transform.position + m_castOffset;
+
+                if (timer >= m_castTick)
+                {
+                    this.m_unit.CurrentEnemy.TakeDamage(this.m_unit.UnitDamage);
+                    timer = 0f;
+                }
+
+                timer += Time.deltaTime;
+                yield return null;
+            }
+
+            Destroy(hitEffect.gameObject);
+        }
+
+        #endregion
 
         //anim event for melee units
         private void AttackAnimEvent()
