@@ -11,6 +11,7 @@ namespace OurGame.Spawn
 
         [SerializeField] private Unit m_Knight;
         [SerializeField] private Unit m_Archer;
+        [SerializeField] private Unit m_Mage;
 
         private Lane m_activeLane = null;
         private bool canSpawn = true;
@@ -45,6 +46,14 @@ namespace OurGame.Spawn
             if (!canSpawn || m_Coroutine !=null) { return; }
             canSpawn = false;
             Instantiate(m_Archer, m_activeLane.transform);
+            m_Coroutine = StartCoroutine(SpawnProccess());
+        }
+
+        public void SpawnMage()
+        {
+            if (!canSpawn || m_Coroutine != null) { return; }
+            canSpawn = false;
+            Instantiate(m_Mage, m_activeLane.transform);
             m_Coroutine = StartCoroutine(SpawnProccess());
         }
 
