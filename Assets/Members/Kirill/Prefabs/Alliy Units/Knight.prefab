@@ -1547,11 +1547,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2040980987471947200, guid: 91d0cdbd70d92534db2944a72c595cfe, type: 3}
       propertyPath: m_maxHealth
-      value: 30
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 2040980987471947200, guid: 91d0cdbd70d92534db2944a72c595cfe, type: 3}
+      propertyPath: m_moveSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2040980987471947200, guid: 91d0cdbd70d92534db2944a72c595cfe, type: 3}
       propertyPath: m_unitDamage
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8849719420550971650, guid: 91d0cdbd70d92534db2944a72c595cfe, type: 3}
       propertyPath: m_Avatar
