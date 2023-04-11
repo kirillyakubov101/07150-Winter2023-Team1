@@ -12,9 +12,11 @@ namespace OurGame.Spawn
 
         [SerializeField] private Unit m_Knight;
         [SerializeField] private Unit m_Archer;
+        [SerializeField] private Unit m_Mage;
+
         [SerializeField] private int m_KnightCost = 250;
         [SerializeField] private int m_ArcherCost = 200;
-        [SerializeField] private Unit m_Mage;
+
         
         private Lane m_activeLane = null;
         private bool canSpawn = true;
