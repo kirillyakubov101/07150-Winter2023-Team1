@@ -31,7 +31,7 @@ namespace OurGame.Units
         //Take Damage Delegate / Event
         public event Action<float> OnTakeDamage;
 
-        private void OnEnable()
+        public virtual void OnEnable()
         {
             this.m_health = this.m_maxHealth; //init
             m_currentEnemy = null;

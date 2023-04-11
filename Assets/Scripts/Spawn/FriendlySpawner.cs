@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using OurGame.Units;
+using OurGame.Currency;
 using System;
 
 namespace OurGame.Spawn
@@ -11,8 +12,10 @@ namespace OurGame.Spawn
 
         [SerializeField] private Unit m_Knight;
         [SerializeField] private Unit m_Archer;
+        [SerializeField] private int m_KnightCost = 250;
+        [SerializeField] private int m_ArcherCost = 200;
         [SerializeField] private Unit m_Mage;
-
+        
         private Lane m_activeLane = null;
         private bool canSpawn = true;
         private Coroutine m_Coroutine;
@@ -33,9 +36,10 @@ namespace OurGame.Spawn
         }
 
         public void SpawnKnight()
-        {
-            if (!canSpawn || m_Coroutine != null) { return; }
+        {                                     
+            if (!canSpawn || m_Coroutine != null || CurrencyManager._instance.CurrencyValue < m_KnightCost) { return; }
             canSpawn = false;
+            CurrencyManager._instance.AddRemoveCurrency(-m_KnightCost);
             Instantiate(m_Knight, m_activeLane.transform);
             m_Coroutine = StartCoroutine(SpawnProccess());
             
@@ -43,8 +47,9 @@ namespace OurGame.Spawn
 
         public void SpawnArcher()
         {
-            if (!canSpawn || m_Coroutine !=null) { return; }
+            if (!canSpawn || m_Coroutine !=null || CurrencyManager._instance.CurrencyValue < m_ArcherCost) { return; }
             canSpawn = false;
+            CurrencyManager._instance.AddRemoveCurrency(-m_ArcherCost);
             Instantiate(m_Archer, m_activeLane.transform);
             m_Coroutine = StartCoroutine(SpawnProccess());
         }
