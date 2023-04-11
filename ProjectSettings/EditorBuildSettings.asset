@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: a97ed997bea46794bae84d7fc10254ee
   - enabled: 1
-    path: Assets/Members/Kirill/Sandbox.unity
-    guid: 4b3da29a9474c0b49b48b11d7c565b9b
+    path: Assets/Members/Kirill/Scenes/Level_1.unity
+    guid: b9da7b7a68337ab488b4d1019de2149f
   m_configObjects: {}
