@@ -1,13 +1,14 @@
 using UnityEngine;
 using TMPro;
-using System.Collections;
 
 namespace OurGame.UI
 {
     public class TextFactory : MonoBehaviour
     {
         [SerializeField] private TMP_Text m_damageTextPrefab;
+        [SerializeField] private TMP_Text m_evadeTextPrefab;
 
+        private const string EvadeTEXT = "MISS!";
 
         private static TextFactory instance;
         private void Awake()
@@ -20,6 +21,12 @@ namespace OurGame.UI
         {
             TMP_Text textInst = Instantiate(m_damageTextPrefab, parent);
             textInst.text = damageValue.ToString();
+        }
+
+        public void CreateEvadeText(Transform parent)
+        {
+            TMP_Text textInst = Instantiate(m_evadeTextPrefab, parent);
+            textInst.text = EvadeTEXT;
         }
 
         public static TextFactory Instance

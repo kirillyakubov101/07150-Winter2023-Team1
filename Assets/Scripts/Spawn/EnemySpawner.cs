@@ -11,10 +11,11 @@ namespace OurGame.Spawn
         [SerializeField] private GameObject[] _enemiesPrefabs;
         [SerializeField] private Transform[] _Lanes;
         [SerializeField] private float spawnCd;
+        [SerializeField] private int maxSpawnUnits;
 
         private void Start()
         {
-            _poolSystem = new PoolSystem(_enemiesPrefabs);
+            _poolSystem = new PoolSystem(_enemiesPrefabs, maxSpawnUnits);
 
             StartCoroutine(SpawnProcess());
         }
@@ -41,6 +42,7 @@ namespace OurGame.Spawn
                     yield return null;
                     newInst.SetActive(true);
                 }
+             
                 
                 yield return TimeToWait;
             }

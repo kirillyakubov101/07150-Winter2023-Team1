@@ -6,14 +6,18 @@ namespace Pooling
     [System.Serializable]
     public class PoolSystem
     {
-        private const int MAX_SPAWN_COUNT = 10;
+        private readonly int MAX_SPAWN_COUNT;
         private GameObject[] objectPrefabs;
         private Queue<GameObject> m_spawnQueue = new Queue<GameObject>();
         private int spawnCount = 0;
 
-        public PoolSystem(GameObject[] objs)
+        private GameObject[] m_UnitsArray;
+
+        public PoolSystem(GameObject[] objs,int maxCount)
         {
             objectPrefabs = objs;
+            MAX_SPAWN_COUNT = maxCount;
+            m_UnitsArray = new GameObject[MAX_SPAWN_COUNT];
         }
 
         public bool CreateObject(out GameObject obj)
@@ -25,6 +29,7 @@ namespace Pooling
             if (spawnCount < MAX_SPAWN_COUNT)
             {
                 obj = CreateNewObjectDirectly();
+                PopulateArray(obj);
                 spawnCount++;
 
                 if (!obj.TryGetComponent(out IAvailable _unit)) { return false; } //safety check and assinging the unit
@@ -36,6 +41,7 @@ namespace Pooling
             {
                 obj = m_spawnQueue.Peek();
 
+                //I pass the first elemet in-line
                 if (TryGettingAvailableObject(obj))
                 {
                     //return the available object
@@ -72,29 +78,34 @@ namespace Pooling
 
         private bool TryGettingAvailableObject(GameObject obj)
         {
-            int count = 0;
+            GameObject availabeElement = null;
 
-            while(count < MAX_SPAWN_COUNT)
+            //find the available element
+            foreach (var ele in m_UnitsArray)
             {
-                if (obj.TryGetComponent(out IAvailable _unit) && _unit.GetAvailability()) { return true; }
-
-                //advance to the next queued obj if the previous one failed the condition
-                obj = m_spawnQueue.Dequeue();
-                m_spawnQueue.Enqueue(obj);
-
-                obj = m_spawnQueue.Peek(); //assign the next one
-
-                count++;
+                if (ele.TryGetComponent(out IAvailable _unit) && _unit.GetAvailability())
+                {
+                    availabeElement = ele;
+                    break;
+                }
             }
 
-            //searched too much for an avaialable unit
-            if(count >= MAX_SPAWN_COUNT) { return false; }
-          
-           
+            //in case failure, leave
+            if (availabeElement == null) { return false; }
 
-            //in case it's not a IAvailable | should not get here
-            Debug.LogWarning("Should not get here");
-            return false;
+            while(obj != availabeElement)
+            {
+                GameObject firstEle = m_spawnQueue.Dequeue();
+                m_spawnQueue.Enqueue(firstEle);
+                obj = m_spawnQueue.Peek();
+            }
+
+            return true;
+        }
+
+        private void PopulateArray(GameObject newObj)
+        {
+            m_UnitsArray[spawnCount] = newObj;
         }
     }
 }
