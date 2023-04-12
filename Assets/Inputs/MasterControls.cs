@@ -35,6 +35,15 @@ public partial class @MasterControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ChangeLane"",
+                    ""type"": ""Button"",
+                    ""id"": ""12c169a3-26fe-4e16-a87b-822fb67962ce"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -70,6 +79,17 @@ public partial class @MasterControls : IInputActionCollection2, IDisposable
                     ""action"": ""CameraMoveHorizontal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3c439bf4-4fc7-4bf6-9b6d-40d8bc8e4ab5"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""MultiTap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeLane"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -79,6 +99,7 @@ public partial class @MasterControls : IInputActionCollection2, IDisposable
         // MainInputs
         m_MainInputs = asset.FindActionMap("MainInputs", throwIfNotFound: true);
         m_MainInputs_CameraMoveHorizontal = m_MainInputs.FindAction("CameraMoveHorizontal", throwIfNotFound: true);
+        m_MainInputs_ChangeLane = m_MainInputs.FindAction("ChangeLane", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -139,11 +160,13 @@ public partial class @MasterControls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_MainInputs;
     private IMainInputsActions m_MainInputsActionsCallbackInterface;
     private readonly InputAction m_MainInputs_CameraMoveHorizontal;
+    private readonly InputAction m_MainInputs_ChangeLane;
     public struct MainInputsActions
     {
         private @MasterControls m_Wrapper;
         public MainInputsActions(@MasterControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @CameraMoveHorizontal => m_Wrapper.m_MainInputs_CameraMoveHorizontal;
+        public InputAction @ChangeLane => m_Wrapper.m_MainInputs_ChangeLane;
         public InputActionMap Get() { return m_Wrapper.m_MainInputs; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -156,6 +179,9 @@ public partial class @MasterControls : IInputActionCollection2, IDisposable
                 @CameraMoveHorizontal.started -= m_Wrapper.m_MainInputsActionsCallbackInterface.OnCameraMoveHorizontal;
                 @CameraMoveHorizontal.performed -= m_Wrapper.m_MainInputsActionsCallbackInterface.OnCameraMoveHorizontal;
                 @CameraMoveHorizontal.canceled -= m_Wrapper.m_MainInputsActionsCallbackInterface.OnCameraMoveHorizontal;
+                @ChangeLane.started -= m_Wrapper.m_MainInputsActionsCallbackInterface.OnChangeLane;
+                @ChangeLane.performed -= m_Wrapper.m_MainInputsActionsCallbackInterface.OnChangeLane;
+                @ChangeLane.canceled -= m_Wrapper.m_MainInputsActionsCallbackInterface.OnChangeLane;
             }
             m_Wrapper.m_MainInputsActionsCallbackInterface = instance;
             if (instance != null)
@@ -163,6 +189,9 @@ public partial class @MasterControls : IInputActionCollection2, IDisposable
                 @CameraMoveHorizontal.started += instance.OnCameraMoveHorizontal;
                 @CameraMoveHorizontal.performed += instance.OnCameraMoveHorizontal;
                 @CameraMoveHorizontal.canceled += instance.OnCameraMoveHorizontal;
+                @ChangeLane.started += instance.OnChangeLane;
+                @ChangeLane.performed += instance.OnChangeLane;
+                @ChangeLane.canceled += instance.OnChangeLane;
             }
         }
     }
@@ -170,5 +199,6 @@ public partial class @MasterControls : IInputActionCollection2, IDisposable
     public interface IMainInputsActions
     {
         void OnCameraMoveHorizontal(InputAction.CallbackContext context);
+        void OnChangeLane(InputAction.CallbackContext context);
     }
 }
