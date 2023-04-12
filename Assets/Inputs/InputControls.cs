@@ -8,8 +8,12 @@ namespace OurGame.Input
         private static InputControls instance;
         private MasterControls m_masterControls;
         private Vector2 cameraMoveDir = Vector2.zero;
+        private Vector2 mousePos = Vector2.zero;
+        
 
         public Vector2 CameraMoveDir { get => cameraMoveDir; }
+        public Vector2 MousePos { get => mousePos; }
+
         public static InputControls Instance 
         { 
             get
@@ -22,6 +26,7 @@ namespace OurGame.Input
                 return instance;
             }
         }
+
 
         #region Subscribe_To_Input_System
         private void OnEnable()
@@ -57,6 +62,31 @@ namespace OurGame.Input
             else
             {
                 cameraMoveDir = Vector2.zero;
+            }
+        }
+
+        public void OnChangeLane(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+                RaycastHit hitPoint;
+
+                if(Physics.Raycast(ray, out hitPoint))
+                {
+                    if(hitPoint.collider.tag == "Lane1")
+                    {
+                        UI.RecruitUI.Instance.ChangeLane(0);
+                    }
+                    if (hitPoint.collider.tag == "Lane2")
+                    {
+                        UI.RecruitUI.Instance.ChangeLane(1);
+                    }
+                    if (hitPoint.collider.tag == "Lane3")
+                    {
+                        UI.RecruitUI.Instance.ChangeLane(2);
+                    }
+                }
             }
         }
     }
