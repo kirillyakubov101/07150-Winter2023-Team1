@@ -59,6 +59,9 @@ namespace OurGame.Units
         public virtual void TakeDamage(float damage)
         {
             if (IsDead()) { return; }
+
+            SoundManager.playSound?.Invoke(SoundManager.SoundType.UnitHurt, transform.position);
+
             this.m_health = Mathf.Max(this.m_health - damage, 0f);
 
             OnTakeDamage?.Invoke(GetHealthPercent());

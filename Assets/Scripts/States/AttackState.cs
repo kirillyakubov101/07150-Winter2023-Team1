@@ -37,7 +37,7 @@ namespace OurGame.State
 
         public override void Tick(float deltaTime)
         {
-            if(this.m_unit.CurrentEnemy == null || this.m_unit.CurrentEnemy.IsDead())
+            if (this.m_unit.CurrentEnemy == null || this.m_unit.CurrentEnemy.IsDead())
             {
                 LeaveToMoveState();
                 return;
@@ -86,14 +86,16 @@ namespace OurGame.State
         private void AttackAnimEvent()
         {
             if (this.m_unit.IsDead()) { return; }
-            if(this.m_unit.CurrentEnemy == null || this.m_unit.CurrentEnemy.IsDead())
+
+            SoundManager.playSound?.Invoke(SoundManager.SoundType.SoldierAttack, transform.position);
+
+            if (this.m_unit.CurrentEnemy == null || this.m_unit.CurrentEnemy.IsDead())
             {
                 LeaveToMoveState();
                 return;
             }
 
             this.m_unit.CurrentEnemy.TakeDamage(this.m_unit.UnitDamage);
-
         }
 
         //anim event for ranged units
@@ -101,6 +103,8 @@ namespace OurGame.State
         {
             if(m_projectilePrefab == null) { return; }
             if (this.m_unit.IsDead()) { return; }
+
+            SoundManager.playSound?.Invoke(SoundManager.SoundType.ArcherAttack, transform.position);
 
             if (this.m_unit.CurrentEnemy == null || this.m_unit.CurrentEnemy.IsDead())
             {

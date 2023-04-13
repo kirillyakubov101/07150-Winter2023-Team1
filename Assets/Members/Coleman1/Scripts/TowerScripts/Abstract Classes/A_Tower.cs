@@ -25,22 +25,22 @@ public abstract class A_Tower : MonoBehaviour, IDamageable
     [SerializeField] private TargetPriority priority;
 
     public List<EnemyUnit> enemiesInRange = new List<EnemyUnit>();
-    private EnemyUnit currentEnemy;
+    public EnemyUnit currentEnemy;
     public bool rotateTowardsTarget; 
 
     [Header("Attacking")]
 
     [SerializeField] private float attackSpeed;
-    [SerializeField] private int projectileDamage;
-    [SerializeField] private float projectileSpeed;
+    public int projectileDamage;
+    public float projectileSpeed;
 
     private Quaternion defaultRotation;
 
     [Header("Game Objects")]
 
-    [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private Transform projectileSpawnPosition;
-    [SerializeField] private Transform towerPivot;
+    public GameObject projectilePrefab;
+    public Transform projectileSpawnPosition;
+    public Transform towerPivot;
 
     private float lastAttackTimer;
 
@@ -110,17 +110,7 @@ public abstract class A_Tower : MonoBehaviour, IDamageable
         }
     }
 
-    private void Attack()
-    {
-        if (rotateTowardsTarget)
-        {
-            towerPivot.LookAt(currentEnemy.transform);
-            towerPivot.eulerAngles = new Vector3(towerPivot.eulerAngles.x, towerPivot.eulerAngles.y, 0);
-
-            GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPosition.position, Quaternion.identity);
-            projectile.GetComponent<A_Projectile>().Initialize(currentEnemy, projectileDamage, projectileSpeed);
-        }
-    }
+    public abstract void Attack();
 
     public float GetRange()
     {
@@ -130,12 +120,16 @@ public abstract class A_Tower : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         this.health -= damage;
+
+        SoundManager.playSound?.Invoke(SoundManager.SoundType.UnitHurt, transform.position);
     }
 
     public bool IsDead()
     {
         if(health <= 0)
         {
+            SoundManager.playSound?.Invoke(SoundManager.SoundType.TowerDeath, transform.position);
+
             Destroy(gameObject);
             return true;
         }
