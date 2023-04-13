@@ -1393,6 +1393,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1188580380}
+        m_TargetAssemblyTypeName: OurGame.BackgroundMusic, Assembly-CSharp
+        m_MethodName: SwapTrack
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 822016a489ef1984fa0eeb6d0233d387, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &433804061
 GameObject:
   m_ObjectHideFlags: 0
@@ -2850,7 +2862,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1240166530}
   m_HandleRect: {fileID: 1537301861}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.1
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0.3
@@ -3397,7 +3409,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1176221827}
   m_HandleRect: {fileID: 1543423364}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.1
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0.3
@@ -3515,7 +3527,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1499650939}
   m_HandleRect: {fileID: 433804062}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.1
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0.3
@@ -3925,6 +3937,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1176221826}
   m_CullTransparentMesh: 1
+--- !u!114 &1188580380 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3092852450534124520, guid: f4f26d8c96126044a9b27807ce187d11, type: 3}
+  m_PrefabInstance: {fileID: 2553745480907692325}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee7efd3fa9eab364db9a7fc4cef9d3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1196847972
 GameObject:
   m_ObjectHideFlags: 0
@@ -7082,3 +7105,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_resolutionDropdown: {fileID: 1719837455}
+--- !u!1001 &2553745480907692325
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3092852450534124519, guid: f4f26d8c96126044a9b27807ce187d11, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3092852450534124519, guid: f4f26d8c96126044a9b27807ce187d11, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3092852450534124519, guid: f4f26d8c96126044a9b27807ce187d11, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3092852450534124519, guid: f4f26d8c96126044a9b27807ce187d11, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3092852450534124519, guid: f4f26d8c96126044a9b27807ce187d11, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3092852450534124519, guid: f4f26d8c96126044a9b27807ce187d11, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3092852450534124519, guid: f4f26d8c96126044a9b27807ce187d11, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3092852450534124519, guid: f4f26d8c96126044a9b27807ce187d11, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3092852450534124519, guid: f4f26d8c96126044a9b27807ce187d11, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3092852450534124519, guid: f4f26d8c96126044a9b27807ce187d11, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3092852450534124519, guid: f4f26d8c96126044a9b27807ce187d11, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3092852450534124522, guid: f4f26d8c96126044a9b27807ce187d11, type: 3}
+      propertyPath: m_Name
+      value: BackgroundMusic
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: f4f26d8c96126044a9b27807ce187d11, type: 3}
