@@ -686,7 +686,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   towerTileMap: {fileID: 6094495376972102795}
-  playerCamera: {fileID: 0}
+  playerCamera: {fileID: 638289137312887983, guid: 98aa4804b2a400848bae9d74ed36b50f, type: 3}
 --- !u!1001 &52814375603714635
 PrefabInstance:
   m_ObjectHideFlags: 0

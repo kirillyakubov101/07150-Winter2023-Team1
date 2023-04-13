@@ -293,7 +293,7 @@ Transform:
   - {fileID: 5616373785744411036}
   - {fileID: 5616373785692293621}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5616373787386155194
 MonoBehaviour:
@@ -311,7 +311,8 @@ MonoBehaviour:
   - {fileID: 5616373787402234029}
   - {fileID: 5616373785744411035}
   - {fileID: 5616373785692293620}
-  m_Kngiht: {fileID: 5554903084768364916, guid: 463b5733b3b4bae479a64c0d04025e17, type: 3}
+  m_Knight: {fileID: 5554903084768364916, guid: 463b5733b3b4bae479a64c0d04025e17, type: 3}
+  m_Archer: {fileID: 4069585219172647964, guid: 4ee5a3dc21de1f24f985f8bd45adec56, type: 3}
 --- !u!1 &5616373787402234031
 GameObject:
   m_ObjectHideFlags: 0
