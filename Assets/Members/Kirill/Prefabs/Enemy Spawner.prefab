@@ -146,4 +146,4 @@ MonoBehaviour:
   - {fileID: 466484422723951406}
   - {fileID: 466484421610194355}
   - {fileID: 466484422138112085}
-  spawnCd: 1
+  spawnCd: 0.5
