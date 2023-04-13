@@ -16,8 +16,8 @@ namespace OurGame.Spawn
 
         [SerializeField] private int m_KnightCost = 250;
         [SerializeField] private int m_ArcherCost = 200;
+        [SerializeField] private int m_MageCost = 300;
 
-        
         private Lane m_activeLane = null;
         private bool canSpawn = true;
         private Coroutine m_Coroutine;
@@ -60,6 +60,7 @@ namespace OurGame.Spawn
         {
             if (!canSpawn || m_Coroutine != null) { return; }
             canSpawn = false;
+            CurrencyManager._instance.AddRemoveCurrency(-m_MageCost);
             Instantiate(m_Mage, m_activeLane.transform);
             m_Coroutine = StartCoroutine(SpawnProccess());
         }
