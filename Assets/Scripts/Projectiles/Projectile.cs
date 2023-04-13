@@ -9,6 +9,7 @@ namespace OurGame.Projectiles
         [SerializeField] private float m_rotationSpeed = 100f;
 
         private float m_projectileDamage;
+        private bool m_hasHit = false;
 
         private void Start()
         {
@@ -28,9 +29,11 @@ namespace OurGame.Projectiles
 
         private void OnTriggerEnter(Collider other)
         {
+            if (m_hasHit) { return; }
             if(other.TryGetComponent(out Unit unit))
             {
                 unit.TakeDamage(m_projectileDamage);
+                m_hasHit = true;
                 Destroy(gameObject);
             }
         }

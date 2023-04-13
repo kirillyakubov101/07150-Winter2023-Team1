@@ -1,5 +1,7 @@
 using OurGame.Projectiles;
 using OurGame.Units;
+using OurGame.VFX;
+using System.Collections;
 using UnityEngine;
 
 namespace OurGame.State
@@ -16,9 +18,15 @@ namespace OurGame.State
         [SerializeField] private Projectile m_projectilePrefab;
         [SerializeField] private Transform m_shootingPoint;
 
+        [Header("ONLT FOR MAGES")]
+        [SerializeField] private LineRenderer m_lineRenderer;
+        [SerializeField] private Vector3 m_castOffset;
+        [SerializeField] private float m_castTick = 0.7f;
+
         //this is the offset to add to the attack range when checking "OutOfRange" functionality
         private const float c_offsetRange = 3f;
 
+        private Unit m_targetUnit;
 
         private AttackState()
         {
@@ -32,7 +40,15 @@ namespace OurGame.State
 
         public override void ExitState()
         {
-            this.m_unit.CurrentEnemy = null;
+           this.m_unit.CurrentEnemy = null;
+           this.m_targetUnit = null;
+
+            //for mages
+            if (m_lineRenderer)
+            {
+                m_lineRenderer.enabled = false;
+            }
+           
         }
 
         public override void Tick(float deltaTime)
@@ -43,33 +59,35 @@ namespace OurGame.State
                 return;
             }
 
-            if(this.m_unit.CurrentEnemy is Unit)
+            if(this.m_unit.CurrentEnemy is Unit && m_targetUnit == null)
             {
-                Unit unit = (Unit)this.m_unit.CurrentEnemy;
-
+                m_targetUnit = (Unit)this.m_unit.CurrentEnemy;
+            }
+          
+            if(m_targetUnit != null)
+            {
+                checkInRangeTimer += Time.deltaTime;
                 //check in range every "c_CheckInRangeCD" seconds to avoid too many calculations
                 if (checkInRangeTimer >= c_CheckInRangeCD)
                 {
                     checkInRangeTimer = 0f;
 
-                    if (IsUnitOutOfRange(unit))
+                    if (IsUnitOutOfRange())
                     {
                         LeaveToMoveState();
-                        return;
                     }
                 }
-
-                checkInRangeTimer += Time.deltaTime;
             }
+                
         }
 
-        private bool IsUnitOutOfRange(Unit target)
+        private bool IsUnitOutOfRange()
         {
-            //float distance = Vector3.Distance(transform.position, this.m_unit.CurrentEnemy.transform.position);
-            //float acceptable = this.m_unit.AttackRange + c_offsetRange;
+            float distance = Vector3.Distance(transform.position, m_targetUnit.transform.position);
+            float acceptable = this.m_unit.AttackRange + c_offsetRange;
 
-            float distance = (target.transform.position - transform.position).magnitude;
-            float acceptable = target.AttackRange + c_offsetRange;
+            //float distance = (m_targetUnit.transform.position - transform.position).magnitude;
+            //float acceptable = m_targetUnit.AttackRange + c_offsetRange;
 
             return distance > acceptable;
         }
@@ -77,10 +95,42 @@ namespace OurGame.State
         private void LeaveToMoveState()
         {
             this.m_unit.StateMachine.SwitchState(StateName.MOVE);
-            this.m_unit.CurrentEnemy = null;
         }
 
-        
+        #region Mage
+        private void MageSpellCast()
+        {
+            m_lineRenderer.enabled = true;
+            m_lineRenderer.SetPosition(0, m_lineRenderer.transform.position);
+          
+            StartCoroutine(CastSpellProcess());
+        }
+
+        private IEnumerator CastSpellProcess()
+        {
+            float timer = 0f;
+            ParticleSystem hitEffect = VFX_Factory.Instance.CreateMageImpactEffect(m_lineRenderer.transform);
+            hitEffect.Play();
+
+            while (m_targetUnit)
+            {
+                m_lineRenderer.SetPosition(1, m_targetUnit.transform.position + m_castOffset);
+                hitEffect.transform.position = m_targetUnit.transform.position + m_castOffset;
+
+                if (timer >= m_castTick)
+                {
+                    this.m_unit.CurrentEnemy.TakeDamage(this.m_unit.UnitDamage);
+                    timer = 0f;
+                }
+
+                timer += Time.deltaTime;
+                yield return null;
+            }
+
+            Destroy(hitEffect.gameObject);
+        }
+
+        #endregion
 
         //anim event for melee units
         private void AttackAnimEvent()

@@ -5,7 +5,7 @@ namespace OurGame.State
 {
     public abstract class State : MonoBehaviour
     {
-        [SerializeField] protected Unit m_unit;
+        protected Unit m_unit;
         protected StateName m_currentStateName;
         
         public enum StateName
@@ -13,6 +13,11 @@ namespace OurGame.State
             MOVE,
             ATTACK,
             DEATH
+        }
+
+        virtual protected void Awake()
+        {
+            m_unit = GetComponent<Unit>();
         }
 
         public abstract void EnterState();

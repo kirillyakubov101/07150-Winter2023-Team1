@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 7780838045529354195}
   - component: {fileID: 7780838045529354194}
   - component: {fileID: 7780838045947896039}
-  - component: {fileID: 7780838045947896042}
+  - component: {fileID: 1328110608}
+  - component: {fileID: 5248001598401745088}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -59,7 +60,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_damageTextPrefab: {fileID: 5778150299061450523, guid: fd79449942f478d4daecbfd490689ca1, type: 3}
---- !u!114 &7780838045947896042
+  m_evadeTextPrefab: {fileID: 5778150299061450523, guid: 30fcee2e9ee164d468e038225e780905, type: 3}
+--- !u!114 &1328110608
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -68,20 +70,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 7780838045529354192}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ef82b01c87ada84fab4e61de081d7f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 424bd642da7ab3945bd488fedee4659b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxMixerGroup: {fileID: -6278703718162336649, guid: ed2d69aa95242fd45a85bea7bef3ec07, type: 2}
-  audioClips:
-  - soundType: 0
-    audioClip: {fileID: 8300000, guid: a667c9f26ff5af243bef60007867e558, type: 3}
-  - soundType: 0
-    audioClip: {fileID: 8300000, guid: 808b3a6464124bd4bbba5d54bcd4d1c4, type: 3}
-  - soundType: 1
-    audioClip: {fileID: 8300000, guid: acdb97b1146b19a48b4cb18f6ee0abed, type: 3}
-  - soundType: 3
-    audioClip: {fileID: 8300000, guid: 2ede0d0114226084783315c39f71f3b8, type: 3}
-  - soundType: 3
-    audioClip: {fileID: 8300000, guid: 8e63b89ccce376c4b9a47f9e0ea33804, type: 3}
-  - soundType: 3
-    audioClip: {fileID: 8300000, guid: 4484135f46e00ac45b5a41445ed85d11, type: 3}
+  m_mageImpactEffect: {fileID: 6234243953151170467, guid: 1c949ffdf005019408ee4aec00773097, type: 3}
+--- !u!114 &5248001598401745088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7780838045529354192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b62f802f1b14b9048ba42ffeb6356ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
