@@ -200,9 +200,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 50
-  health: 100
+  health: 300
   priority: 0
   enemiesInRange: []
+  currentEnemy: {fileID: 0}
   rotateTowardsTarget: 1
   attackSpeed: 2
   projectileDamage: 10
