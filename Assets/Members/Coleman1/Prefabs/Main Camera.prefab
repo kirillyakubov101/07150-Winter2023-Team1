@@ -59,14 +59,14 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 20000
   field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147483647
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 2049
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
@@ -131,4 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5625a0524b25ec4797ef766ceb13ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_cameraMoveSpeed: 30
+  m_cameraAcceleration: 200
+  Min_Z: 50
+  Max_Z: 2000
+  m_maxSpeed: 500
+  m_defaultSpeed: 10
