@@ -13,13 +13,11 @@ namespace OurGame.Spawn
         [SerializeField] private Unit m_Knight;
         [SerializeField] private Unit m_Archer;
         [SerializeField] private Unit m_Mage;
-        [SerializeField] private A_Tower m_Tower;
 
         [SerializeField] private int m_KnightCost = 250;
         [SerializeField] private int m_ArcherCost = 200;
-        [SerializeField] private int m_TowerCost = 300;
+        [SerializeField] private int m_MageCost = 300;
 
-        
         private Lane m_activeLane = null;
         private bool canSpawn = true;
         private Coroutine m_Coroutine;
@@ -62,17 +60,8 @@ namespace OurGame.Spawn
         {
             if (!canSpawn || m_Coroutine != null) { return; }
             canSpawn = false;
+            CurrencyManager._instance.AddRemoveCurrency(-m_MageCost);
             Instantiate(m_Mage, m_activeLane.transform);
-            m_Coroutine = StartCoroutine(SpawnProccess());
-        }
-
-        //Tried to make the cool down for the towers, only works for the image 
-
-        public void SpawnTower()
-        {
-            if (!canSpawn || m_Coroutine != null || CurrencyManager._instance.CurrencyValue < m_TowerCost) { return; }
-            TowerBuildingSystem.canBePlaced = false;
-            CurrencyManager._instance.AddRemoveCurrency(-m_TowerCost);
             m_Coroutine = StartCoroutine(SpawnProccess());
         }
 
@@ -82,7 +71,6 @@ namespace OurGame.Spawn
             yield return new WaitForSeconds(c_spawnCoolDown);
 
             canSpawn = true;
-            TowerBuildingSystem.canBePlaced = true;
             m_Coroutine = null;
         }
     }
