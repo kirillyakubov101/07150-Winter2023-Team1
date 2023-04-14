@@ -30,7 +30,7 @@ namespace OurGame.Currency
 
         private void UpdateValue(int value)
         {
-            Debug.Log(value);
+            //Debug.Log(value);
             _textMesh.text = value.ToString();
         }
 
