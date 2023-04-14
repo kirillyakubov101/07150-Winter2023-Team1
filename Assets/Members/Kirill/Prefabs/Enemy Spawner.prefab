@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 466484421610194354}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 38, y: 0, z: 160}
+  m_LocalPosition: {x: 38, y: 4, z: 97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 466484422138112084}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 46, y: 0, z: 160}
+  m_LocalPosition: {x: 46, y: 4, z: 97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -86,7 +86,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 466484422723951393}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 30, y: 0, z: 160}
+  m_LocalPosition: {x: 30, y: 4, z: 97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -126,7 +126,7 @@ Transform:
   - {fileID: 466484421610194355}
   - {fileID: 466484422138112085}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &466484422808812081
 MonoBehaviour:
@@ -142,8 +142,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemiesPrefabs:
   - {fileID: 5862002004768175867, guid: ebc68c280f80ca64cb2302c8b57b01a4, type: 3}
+  - {fileID: 6989307076009545691, guid: 23a8f1636a507c147b9fc7225592896e, type: 3}
   _Lanes:
   - {fileID: 466484422723951406}
   - {fileID: 466484421610194355}
   - {fileID: 466484422138112085}
-  spawnCd: 0.5
+  spawnCd: 1
+  maxSpawnUnits: 20
