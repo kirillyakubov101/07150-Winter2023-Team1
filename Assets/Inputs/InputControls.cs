@@ -39,7 +39,7 @@ namespace OurGame.Input
         }
         private void OnDestroy()
         {
-            m_masterControls.MainInputs.Disable();
+            //m_masterControls.MainInputs.Disable();
         }
         #endregion
 
