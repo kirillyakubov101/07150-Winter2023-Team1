@@ -93,7 +93,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 10, z: 10}
+  m_Size: {x: 30, y: 10, z: 1}
   m_Center: {x: 0, y: 0, z: -1.4}
 --- !u!114 &2724609086029195292
 MonoBehaviour:
@@ -107,12 +107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec773c9e3f9df141b13a878e281ccc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allyLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!54 &168330840729989474
 Rigidbody:
   m_ObjectHideFlags: 0

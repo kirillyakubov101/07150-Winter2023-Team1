@@ -9,7 +9,6 @@ namespace OurGame
        
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log(other.gameObject.layer.ToString());
             if (other.gameObject.CompareTag("Enemy"))
             {
                 Debug.Log("lose");
