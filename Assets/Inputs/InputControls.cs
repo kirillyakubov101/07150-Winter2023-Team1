@@ -9,6 +9,8 @@ namespace OurGame.Input
         private MasterControls m_masterControls;
         private Vector2 cameraMoveDir = Vector2.zero;
         private Vector2 mousePos = Vector2.zero;
+
+        [SerializeField] private LayerMask layerMask; //In order to prevent the raycast from detecting objects other than the lanes. Required for TowerBuildingSystem
         
 
         public Vector2 CameraMoveDir { get => cameraMoveDir; }
@@ -37,7 +39,7 @@ namespace OurGame.Input
         }
         private void OnDestroy()
         {
-            m_masterControls.MainInputs.Disable();
+            //m_masterControls.MainInputs.Disable();
         }
         #endregion
 
@@ -72,7 +74,7 @@ namespace OurGame.Input
                 Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
                 RaycastHit hitPoint;
 
-                if(Physics.Raycast(ray, out hitPoint))
+                if(Physics.Raycast(ray, out hitPoint, 100f, layerMask)) //Added layer maks to make it ignore building tiles
                 {
                     if(hitPoint.collider.tag == "Lane1")
                     {

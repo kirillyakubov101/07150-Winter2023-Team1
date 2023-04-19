@@ -17,6 +17,7 @@ namespace OurGame.Spawn
         [SerializeField] private int m_KnightCost = 250;
         [SerializeField] private int m_ArcherCost = 200;
         [SerializeField] private int m_MageCost = 300;
+        [SerializeField] private int m_TowerCost = 300;
 
         private Lane m_activeLane = null;
         private bool canSpawn = true;
@@ -64,6 +65,13 @@ namespace OurGame.Spawn
             Instantiate(m_Mage, m_activeLane.transform);
             m_Coroutine = StartCoroutine(SpawnProccess());
         }
+        public void SpawnTower()
+        {
+            if (!canSpawn || m_Coroutine != null || CurrencyManager._instance.CurrencyValue < m_TowerCost) { return; }
+            TowerBuildingSystem.canBePlaced = false;
+            CurrencyManager._instance.AddRemoveCurrency(-m_TowerCost);
+            m_Coroutine = StartCoroutine(SpawnProccess());
+        }
 
         private IEnumerator SpawnProccess()
         {
@@ -71,6 +79,7 @@ namespace OurGame.Spawn
             yield return new WaitForSeconds(c_spawnCoolDown);
 
             canSpawn = true;
+            TowerBuildingSystem.canBePlaced = true;
             m_Coroutine = null;
         }
     }

@@ -1,6 +1,8 @@
+using OurGame.Spawn;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
 
@@ -10,16 +12,18 @@ public class TowerBuildingSystem : MonoBehaviour
 
     public static TowerBuildingSystem current; //Singleton reference of our script
 
+    RaycastHit rayHit;
+
     public GridLayout gridLayout;
     private Grid grid;
     private Vector3Int cellPos;
-    private bool canBePlaced = false;
+    public static bool canBePlaced = false;
+    private bool isTaken = false;
 
-    [SerializeField] private LayerMask terrainLayer;
+    [SerializeField] private LayerMask layerMask;
 
     [Header("Object Needed")]
     [SerializeField] private Tilemap towerTileMap;
-    [SerializeField] private Camera playerCamera;
 
     private GameObject towerToPlace = null;
     private GameObject takenAreaTile = null;
@@ -38,29 +42,25 @@ public class TowerBuildingSystem : MonoBehaviour
     {
         if (towerToPlace != null)
         {
-            Ray cameraRay = playerCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit rayHit;
+            Ray cameraRay = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue()); //playerCamera.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(cameraRay, out rayHit, 100f, terrainLayer))
+            if (Physics.Raycast(cameraRay, out rayHit, 100f, layerMask))
             {
                 cellPos = gridLayout.WorldToCell(rayHit.point);
                 takenAreaTile.transform.position = SnapCoordinateToGrid(rayHit.point);
 
                 if(rayHit.collider.CompareTag("Taken"))
-                    canBePlaced = false;
+                    isTaken = true;
                 else
-                    canBePlaced = true;
+                    isTaken = false;
             }
 
-            if (Input.GetMouseButtonDown(0))
+            if (!canBePlaced && Input.GetKeyDown(KeyCode.Mouse0) && !isTaken)
             {
-                if (canBePlaced)
-                {
-                    towerToPlace.transform.position = SnapCoordinateToGrid(rayHit.point);
-                    takenAreaTile.GetComponent<BoxCollider>().enabled = true;
-                    takenAreaTile = null;
-                    towerToPlace = null;
-                }
+                towerToPlace.transform.position = SnapCoordinateToGrid(rayHit.point);
+                takenAreaTile.GetComponent<BoxCollider>().enabled = true;
+                takenAreaTile = null;
+                towerToPlace = null;
             }
         }
     }

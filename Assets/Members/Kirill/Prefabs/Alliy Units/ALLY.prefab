@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 8849719420550971650}
   m_Layer: 6
   m_Name: ALLY
-  m_TagString: Untagged
+  m_TagString: Ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b86d03b4730b0fb498e21865ab804767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_unit: {fileID: 2040980987471947200}
 --- !u!114 &5989414364320967575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,9 +111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed251e557a07e89428cbdba80fb8b463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_unit: {fileID: 2040980987471947200}
   m_projectilePrefab: {fileID: 0}
   m_shootingPoint: {fileID: 0}
+  m_lineRenderer: {fileID: 0}
+  m_castOffset: {x: 0, y: 0, z: 0}
+  m_castTick: 0.7
 --- !u!114 &7746278138781446653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,7 +128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 271376275eacb6e4ca686cfb09674eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_unit: {fileID: 2040980987471947200}
   m_collider: {fileID: 8356033383435052505}
 --- !u!114 &2040980987471947200
 MonoBehaviour:
